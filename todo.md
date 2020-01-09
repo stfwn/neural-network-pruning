@@ -14,11 +14,11 @@
     - [ ] Thomas
 - [ ] Understand Pytorch example: https://colab.research.google.com/drive/1arq7ZpWoO4Xw1od_RbMTHCl5IwIoYXOZ
     - [ ] Ellis
-    - [ ] Stefan
+    - [X] Stefan
     - [ ] Thomas
 - [ ] Papers en blogs over pruning lezen.
     - [ ] Ellis
-    - [ ] Stefan
+    - [X] Stefan
     - [ ] Thomas
 - [ ] Pytorch pipeline hebben voor MNIST.
 - [ ] Notebook om dit te demonstreren.
