@@ -9,3 +9,4 @@
 | 2020-01-07 | Get planning and workflow up and running.                                                 | All     | 1,5h       |
 | 2020-01-08 | Set up more stuff, learn to use PyTorch, begin constructing model for MNIST.              | Stefan  | 8h         |
 | 2020-01-09 | Read Frankle and Carbin (2019), Morcos et al. (2019) and various blogposts about pruning. | Stefan  | 6h         |
+| 2020-01-10 | Meeting with Putri and BrainCreators.                                                     | All     | 3h         |
