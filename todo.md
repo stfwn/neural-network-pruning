@@ -2,7 +2,7 @@
 
 ## Week 1: Getting Started
 ### 2020-01-07
-- [x] Vul todo in.
+- [x] Write initial todo.
 
 ### 2020-01-10
 - [ ] Send information to Nicolaas Heyning.
@@ -22,7 +22,7 @@
     - [X] Stefan
     - [ ] Thomas
 
-## Week 2
+## Week 2: Getting Pytorch Down
 ### 2020-01-14
 - [ ] Step 1 & 2.
     - [ ] 1: Implement a feedforward neural network and train it on the MNIST dataset.
@@ -35,7 +35,7 @@
     - [ ] Incorporate pruning mechanism.
     - [ ] Implement resetting function.
     
-## Week 3
+## Week 3: Perform Experiments
 ### 2020-01-21
 - [ ] Step 4.
     - [ ] Experiment with different initialization schemas.
@@ -49,7 +49,7 @@
     - [ ] Determine for both of the above networks, and at varying degrees of
           sparsity levels, which schema works best and why.
 
-## Week 4
+## Week 4: Do Optional Things and Write Report
 ### 2020-01-28
 - [ ] Step 6 & 7.
     - [ ] Based on the above results, is it possible, then, to construct a
