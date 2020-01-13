@@ -27,7 +27,7 @@ def main():
     optimizer = optim.SGD(model.parameters(), lr=0.001)
 
     losses = []
-    for epoch in range(5):
+    for epoch in range(50):
         print(f'Training epoch {epoch}.')
         epoch_loss = []
         for batch_data, batch_targets in train_loader:
@@ -59,18 +59,18 @@ def main():
 
 
 class MNISTFC(nn.Module):
-    """ Fully connected (FC) neural network with defaults set to dimensions of
-    the MNIST dataset, based on the example given by BrainCreators."""
+    """ LeNet 300-100 network with in/out dimensions set to the dimensions of
+    the MNIST dataset. """
 
-    def __init__(self, device='cpu', hidden_dim=64, n_classes=10, in_features=28*28):
+    def __init__(self, device='cpu'):
         super(MNISTFC, self).__init__()
 
         self.layers = nn.Sequential(
-                nn.Linear(in_features=in_features, out_features=hidden_dim, bias=True),
+                nn.Linear(in_features=28*28, out_features=300, bias=True),
                 nn.LeakyReLU(negative_slope=0.05),
-                nn.Linear(in_features=hidden_dim, out_features=hidden_dim, bias=True),
+                nn.Linear(in_features=300, out_features=100, bias=True),
                 nn.LeakyReLU(negative_slope=0.05),
-                nn.Linear(in_features=hidden_dim, out_features=n_classes, bias=True)
+                nn.Linear(in_features=100, out_features=10, bias=True)
             ).to(device)
 
     def forward(self, x):
