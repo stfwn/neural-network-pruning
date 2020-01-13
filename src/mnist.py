@@ -16,8 +16,8 @@ def main():
             transform=transforms.ToTensor())
     print(f'Done.\n\t* len(mnist_train)={len(mnist_train)}\n\t* len(mnist_test)={len(mnist_test)}')
 
-    train_loader = data.DataLoader(mnist_train, batch_size=64, shuffle=True)
-    test_loader = data.DataLoader(mnist_test, batch_size=64, shuffle=True)
+    train_loader = data.DataLoader(mnist_train, batch_size=60, shuffle=True)
+    test_loader = data.DataLoader(mnist_test, batch_size=60, shuffle=True)
 
     # Init model and loss function
     model = MNISTFC()
