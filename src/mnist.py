@@ -3,6 +3,10 @@ import torch
 import torch.nn as nn
 from torch.utils import data
 from torchvision import datasets, transforms
+import torch.optim as optim
+
+import numpy as np
+import matplotlib.pyplot as plt
 
 def main():
     print(f'Initializing MNIST datasets.')
@@ -15,9 +19,35 @@ def main():
     train_loader = data.DataLoader(mnist_train, batch_size=64, shuffle=True)
     test_loader = data.DataLoader(mnist_test, batch_size=64, shuffle=True)
 
+    # Init model and loss function
     model = MNISTFC()
-    for batch_data, batch_targets in train_loader:
-        print(model.forward(batch_data))
+    loss_function = nn.CrossEntropyLoss()
+
+    # Connect optimizer to model params
+    optimizer = optim.SGD(model.parameters(), lr=0.001)
+
+    losses = []
+    for epoch in range(10):
+        print(f'Training epoch {epoch}.')
+        epoch_loss = []
+        for batch_data, batch_targets in train_loader:
+
+            # Reset gradient to 0 (otherwise it accumulates)
+            optimizer.zero_grad()
+
+            predictions = model.forward(batch_data)
+            loss = loss_function(predictions, batch_targets)
+
+            # Compute delta terms and do a step of GD
+            loss.backward()
+            optimizer.step()
+
+            # Keep track of loss
+            epoch_loss.append(loss.item())
+        losses.append(np.mean(epoch_loss))
+
+    plt.plot(losses)
+    plt.show()
 
 
 class MNISTFC(nn.Module):
