@@ -1,9 +1,10 @@
 # Todo
 
-## 2020-01-07
+## Week 1: Getting Started
+### 2020-01-07
 - [x] Vul todo in.
 
-## 2020-01-10
+### 2020-01-10
 - [ ] Send information to Nicolaas Heyning.
     - [ ] Ellis
     - [x] Stefan
@@ -20,47 +21,45 @@
     - [X] Ellis
     - [X] Stefan
     - [ ] Thomas
-- [ ] Pytorch pipeline hebben voor MNIST.
-- [ ] Notebook om dit te demonstreren.
-- [ ] Optioneel: pipeline voor CIFAR-10 hebben.
-- [ ] Optioneel: notebook om dit te demonstreren.
 
-# Week 2
-
-## 2020-01-14
-- [ ] Step 1 & 2 from the project proposal:
+## Week 2
+### 2020-01-14
+- [ ] Step 1 & 2.
     - [ ] 1: Implement a feedforward neural network and train it on the MNIST dataset.
-    - [ ] 2: Implement a convolutional neural network and train it on the CIFAR10/MNIST dataset.
-    - (when done, send Andrei mail for pruning code)
+    - [ ] 2: Implement a convolutional neural network and train it on the MNIST dataset.
+    - [ ] When done, send Andrei mail for pruning code.
+    - [ ] Optional: do the same for the CIFAR10 dataset.
 
-## 2020-01-16
-- [ ] Step 3 from the project proposal:
-    - [ ] Implement pruning mechanism.
+### 2020-01-16
+- [ ] Step 3.
+    - [ ] Incorporate pruning mechanism.
     - [ ] Implement resetting function.
     
-# Week 3
+## Week 3
+### 2020-01-21
+- [ ] Step 4.
+    - [ ] Experiment with different initialization schemas.
+          - [ ] Pick some different schema's to try, figure out what they are
+                and decide who does which one.
+          - [ ] Answer the question: does the initialization schema of a
+            network affect its robustness to pruning?
 
-## 2020-01-21
-- [ ] Step 4 from the project proposal:
-    - [ ] Experimenting with different initialisation schemas.
-          - [ ] Multiple runs with different seeds
-          - [ ]  Answer: Does the initialization schema of a network affect its robustness to pruning.
+### 2020-01-23
+- [ ] Step 5.
+    - [ ] Determine for both of the above networks, and at varying degrees of
+          sparsity levels, which schema works best and why.
 
-## 2020-01-23
-- [ ] Step 5 from the project proposal:
-    - [ ] Determine for both of the above networks, and at varying degrees of sparsity levels, which schema works best and why.
-
-# Week 4
-
-## 2020-01-28
-- [ ] Step 6 & 7 from the project proposal:
-    - [ ] Based on the above results, is it possible, then, to construct a custom initialization schema that improves the robustness further?
+## Week 4
+### 2020-01-28
+- [ ] Step 6 & 7.
+    - [ ] Based on the above results, is it possible, then, to construct a
+          custom initialization schema that improves the robustness further?
     - [ ] Check whether the schema built on (6) generalizes to other pruning methods.
 
-## 2020-01-28
+### 2020-01-28
 - [ ] Presentations
     - [ ] Powerpoint (?)
     - [ ] Text
 
-## 2020-01-31
+### 2020-01-31
 - [ ] Final Report
