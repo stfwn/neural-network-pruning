@@ -27,7 +27,7 @@ def main():
     optimizer = optim.SGD(model.parameters(), lr=0.001)
 
     losses = []
-    for epoch in range(10):
+    for epoch in range(5):
         print(f'Training epoch {epoch}.')
         epoch_loss = []
         for batch_data, batch_targets in train_loader:
@@ -48,6 +48,14 @@ def main():
 
     plt.plot(losses)
     plt.show()
+
+    # Evaluate
+    correct = 0
+    for batch_data, batch_targets in test_loader:
+        predictions = model.forward(batch_data)
+        classifications = predictions.argmax(dim=-1, keepdim=True).view_as(batch_targets)
+        correct += classifications.eq(batch_targets).sum().item()
+    print(f'Accuracy on test set: {correct / len(mnist_test) * 100}%')
 
 
 class MNISTFC(nn.Module):
