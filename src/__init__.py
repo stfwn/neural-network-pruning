@@ -1,3 +1,1 @@
-class Example():
-    def __init__(self):
-        pass
+import src.mnist
