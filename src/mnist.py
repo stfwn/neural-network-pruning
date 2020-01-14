@@ -27,6 +27,10 @@ def main():
     optimizer = optim.SGD(model.parameters(), lr=0.001)
 
     losses = []
+
+    """Frankle & Carbin (2019) do 50K iterations with batches of 60. The MNIST
+    training set has 60k samples, so we should also do the same:
+    (50k * 60) / 60000 = 50 epochs."""
     for epoch in range(50):
         print(f'Training epoch {epoch}.')
         epoch_loss = []
