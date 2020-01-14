@@ -7,9 +7,15 @@ import torch
 from training.train import train
 from testing.test import test
 from models.LeNet import LeNet
+# from models.Conv2 import Conv2
 
 def main(args):
-    model = LeNet()
+    if args.model.lower() == 'lenet':
+        model = LeNet()
+    elif args.model.lower() == 'conv2':
+        print('Placeholder to init Conv2 model.')
+        # model = Conv2()
+        raise ValueError
     if args.load_last_pretrained:
         # TODO: make distinction between different models when we have
         # different models. Otherwise this will bug out.
@@ -32,6 +38,7 @@ def parse_args():
     #        help='Load a pretrained model from ./models/states/')
     parser.add_argument('--load-last-pretrained', action='store_true',
             help='Load most recently saved model in ./models/states/.')
+    parser.add_argument('-m' , '--model', type=str, required=True)
 
     return parser.parse_args()
 
