@@ -8,7 +8,7 @@ def test(model, dataset='MNIST'):
     if dataset == 'MNIST':
         test_mnist(model)
     else:
-        raise ValueError('Dataset "{dataset}" not supported.')
+        raise ValueError(f'Dataset "{dataset}" not supported.')
 
 def test_mnist(model):
     print(f'Initializing MNIST testing data.')

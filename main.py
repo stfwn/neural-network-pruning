@@ -14,14 +14,13 @@ def main(args):
     if args.model.lower() == 'lenet':
         model = LeNet()
     elif args.model.lower() == 'conv2':
-        print('Placeholder to init Conv2 model.')
         # model = Conv2()
-        raise ValueError
+        raise ValueError('This is still a placeholder.')
 
     if args.dataset.lower() == 'mnist':
         dataset = 'MNIST'
     else:
-        raise ValueError('Dataset "{args.dataset}" not supported.')
+        raise ValueError(f'Dataset "{args.dataset}" not supported.')
 
     if args.load_last_pretrained:
         # TODO: make distinction between different models when we have
