@@ -1,3 +1,5 @@
+import os
+
 import torch
 import torch.optim as optim
 import torch.nn as nn
@@ -57,6 +59,7 @@ def train_mnist(model):
 
     # Save model
     now = dt.now().strftime('%Y-%m-%d-%H-%M')
+    os.makedirs('./models/states/', exist_ok=True)
     torch.save(model.state_dict(), f'./models/states/{now}.pt')
 
     plt.plot(losses)
