@@ -6,6 +6,7 @@ from torchvision import datasets, transforms
 
 import numpy as np
 import matplotlib.pyplot as plt
+from datetime import datetime as dt
 
 def train(model, dataset='MNIST'):
     if dataset == 'MNIST':
@@ -16,15 +17,11 @@ def train(model, dataset='MNIST'):
 
 
 def train_mnist(model):
-    print(f'Initializing MNIST datasets.')
+    print(f'Initializing MNIST training data.')
     mnist_train = datasets.MNIST(root='./data/', train=True, download=True,
             transform=transforms.ToTensor())
-    mnist_test = datasets.MNIST(root='./data/', train=False, download=True,
-            transform=transforms.ToTensor())
-    print(f'Done.\n\t* len(mnist_train)={len(mnist_train)}\n\t* len(mnist_test)={len(mnist_test)}')
-
     train_loader = data.DataLoader(mnist_train, batch_size=60, shuffle=True)
-    test_loader = data.DataLoader(mnist_test, batch_size=60, shuffle=True)
+    print(f'Initialization done.\n\t* len(mnist_train)={len(mnist_train)}')
 
     # Init loss function
     loss_function = nn.CrossEntropyLoss()
@@ -56,13 +53,9 @@ def train_mnist(model):
             epoch_loss.append(loss.item())
         losses.append(np.mean(epoch_loss))
 
+    # Save model
+    now = dt.now().strftime('%Y-%m-%d-%H-%M')
+    torch.save(model.state_dict(), f'./models/states/{now}.pt')
+
     plt.plot(losses)
     plt.show()
-
-    # Evaluate
-    correct = 0
-    for batch_data, batch_targets in test_loader:
-        predictions = model.forward(batch_data)
-        classifications = predictions.argmax(dim=-1, keepdim=True).view_as(batch_targets)
-        correct += classifications.eq(batch_targets).sum().item()
-    print(f'Accuracy on test set: {correct / len(mnist_test) * 100}%')
