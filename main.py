@@ -19,7 +19,7 @@ def main(args):
     if args.load_last_pretrained:
         # TODO: make distinction between different models when we have
         # different models. Otherwise this will bug out.
-        filename = sorted(os.listdir('./models/states/'))[0]
+        filename = sorted(os.listdir('./models/states/'))[-1]
         print(f'Loading last pretrained model from ./models/states/{filename}')
         model.load_state_dict(torch.load(f'./models/states/{filename}'))
     else:
