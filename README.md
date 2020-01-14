@@ -17,20 +17,18 @@
 ├── faq.md                                  Reasoning about why we did things.
 ├── log.md
 ├── main.py                                 CLI entrypoint.
-├── models                                  Where models are stored.
+├── models
 │   ├── __init__.py
 │   ├── LeNet.py
-│   └── states                              Where net states are stored.
-│       ├── 2020-01-14-11-58.pt
-│       └── 2020-01-14-12-09.pt
-├── README.md                               This file.
-├── testing                                 Code to test nets.
+│   └── states                              Where trained models are stored.
+│       └── 2020-01-14-18-03.pt
+├── README.md
+├── results                                 Where results will be stored.
+├── testing                                 Contains testing code.
 │   ├── __init__.py
-│   └── test.py
+│   └── Tester.py
 ├── todo.md
-└── training                                Code to train nets.
+└── training                                Contains training code.
     ├── __init__.py
-    └── train.py
-
-9 directories, 27 files
+    └── Trainer.py
 ```
