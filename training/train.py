@@ -1,26 +1,32 @@
-#! /bin/python
-import torch
+import torch.optim as optim
 import torch.nn as nn
+
 from torch.utils import data
 from torchvision import datasets, transforms
-import torch.optim as optim
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-def main():
+def train(model, dataset='MNIST'):
+    if dataset == 'MNIST':
+        train_mnist(model)
+    else:
+        print('Unkown dataset.')
+        raise ValueError
+
+
+def train_mnist(model):
     print(f'Initializing MNIST datasets.')
-    mnist_train = datasets.MNIST(root='../data/', train=True, download=True,
+    mnist_train = datasets.MNIST(root='./data/', train=True, download=True,
             transform=transforms.ToTensor())
-    mnist_test = datasets.MNIST(root='../data/', train=False, download=True,
+    mnist_test = datasets.MNIST(root='./data/', train=False, download=True,
             transform=transforms.ToTensor())
     print(f'Done.\n\t* len(mnist_train)={len(mnist_train)}\n\t* len(mnist_test)={len(mnist_test)}')
 
     train_loader = data.DataLoader(mnist_train, batch_size=60, shuffle=True)
     test_loader = data.DataLoader(mnist_test, batch_size=60, shuffle=True)
 
-    # Init model and loss function
-    model = MNISTFC()
+    # Init loss function
     loss_function = nn.CrossEntropyLoss()
 
     # Connect optimizer to model params
@@ -60,30 +66,3 @@ def main():
         classifications = predictions.argmax(dim=-1, keepdim=True).view_as(batch_targets)
         correct += classifications.eq(batch_targets).sum().item()
     print(f'Accuracy on test set: {correct / len(mnist_test) * 100}%')
-
-
-class MNISTFC(nn.Module):
-    """ LeNet 300-100 network with in/out dimensions set to the dimensions of
-    the MNIST dataset. """
-
-    def __init__(self, device='cpu'):
-        super(MNISTFC, self).__init__()
-
-        self.layers = nn.Sequential(
-                nn.Linear(in_features=28*28, out_features=300, bias=True),
-                nn.LeakyReLU(negative_slope=0.05),
-                nn.Linear(in_features=300, out_features=100, bias=True),
-                nn.LeakyReLU(negative_slope=0.05),
-                nn.Linear(in_features=100, out_features=10, bias=True)
-            ).to(device)
-
-    def forward(self, x):
-        if type(x) is not torch.Tensor:
-            raise TypeError
-
-        # Flatten image to fit net input dimensions.
-        x = x.view(x.shape[0], -1)
-        return self.layers.forward(x)
-
-if __name__ == "__main__":
-    main()
