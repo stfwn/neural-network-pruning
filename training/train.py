@@ -15,8 +15,7 @@ def train(model, dataset='MNIST'):
     if dataset == 'MNIST':
         train_mnist(model)
     else:
-        print('Unkown dataset.')
-        raise ValueError
+        raise ValueError(f'Dataset "{dataset}" not supported.')
 
 
 def train_mnist(model):

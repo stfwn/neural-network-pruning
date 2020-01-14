@@ -10,12 +10,19 @@ from models.LeNet import LeNet
 # from models.Conv2 import Conv2
 
 def main(args):
+    # Init model
     if args.model.lower() == 'lenet':
         model = LeNet()
     elif args.model.lower() == 'conv2':
         print('Placeholder to init Conv2 model.')
         # model = Conv2()
         raise ValueError
+
+    if args.dataset.lower() == 'mnist':
+        dataset = 'MNIST'
+    else:
+        raise ValueError('Dataset "{args.dataset}" not supported.')
+
     if args.load_last_pretrained:
         # TODO: make distinction between different models when we have
         # different models. Otherwise this will bug out.
@@ -24,11 +31,11 @@ def main(args):
         model.load_state_dict(torch.load(f'./models/states/{filename}'))
     else:
         print('Training model.')
-        train(model, 'MNIST')
+        train(model, dataset)
 
     print('Testing model.')
     model.eval()
-    test(model, 'MNIST')
+    test(model, dataset)
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Entrypoint for training/testing models in this repository.')
@@ -39,6 +46,7 @@ def parse_args():
     parser.add_argument('--load-last-pretrained', action='store_true',
             help='Load most recently saved model in ./models/states/.')
     parser.add_argument('-m' , '--model', type=str, required=True)
+    parser.add_argument('-d' , '--dataset', type=str, required=True)
 
     return parser.parse_args()
 

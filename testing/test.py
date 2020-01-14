@@ -5,6 +5,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def test(model, dataset='MNIST'):
+    if dataset == 'MNIST':
+        test_mnist(model)
+    else:
+        raise ValueError('Dataset "{dataset}" not supported.')
+
+def test_mnist(model):
     print(f'Initializing MNIST testing data.')
     mnist_test = datasets.MNIST(root='./data/', train=False, download=True,
             transform=transforms.ToTensor())
@@ -17,4 +23,3 @@ def test(model, dataset='MNIST'):
         classifications = predictions.argmax(dim=-1, keepdim=True).view_as(batch_targets)
         correct += classifications.eq(batch_targets).sum().item()
     print(f'Accuracy on test set: {correct / len(mnist_test) * 100}%')
-
