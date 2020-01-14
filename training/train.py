@@ -1,3 +1,4 @@
+import torch
 import torch.optim as optim
 import torch.nn as nn
 
@@ -34,7 +35,8 @@ def train_mnist(model):
     """Frankle & Carbin (2019) do 50K iterations with batches of 60. The MNIST
     training set has 60k samples, so we should also do the same:
     (50k * 60) / 60000 = 50 epochs."""
-    for epoch in range(50):
+    # SHOULD BE 50
+    for epoch in range(2):
         print(f'Training epoch {epoch}.')
         epoch_loss = []
         for batch_data, batch_targets in train_loader:
