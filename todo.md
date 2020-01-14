@@ -5,22 +5,22 @@
 - [x] Write initial todo.
 
 ### 2020-01-10
-- [ ] Send information to Nicolaas Heyning.
+- [x] Send information to Nicolaas Heyning.
     - [ ] Ellis
     - [x] Stefan
-    - [ ] Thomas
-- [ ] Read about neural networks: https://www.3blue1brown.com/neural-networks
+    - [x] Thomas
+- [x] Read about neural networks: https://www.3blue1brown.com/neural-networks
     - [X] Ellis
     - [x] Stefan
-    - [ ] Thomas
-- [ ] Understand Pytorch example: https://colab.research.google.com/drive/1arq7ZpWoO4Xw1od_RbMTHCl5IwIoYXOZ
+    - [x] Thomas
+- [x] Understand Pytorch example: https://colab.research.google.com/drive/1arq7ZpWoO4Xw1od_RbMTHCl5IwIoYXOZ
     - [X] Ellis
     - [X] Stefan
-    - [ ] Thomas
-- [ ] Papers en blogs over pruning lezen.
+    - [x] Thomas
+- [x] Papers en blogs over pruning lezen.
     - [X] Ellis
     - [X] Stefan
-    - [ ] Thomas
+    - [x] Thomas
 
 ## Week 2: Getting Pytorch Down
 ### 2020-01-14
@@ -34,7 +34,7 @@
 - [ ] Step 3.
     - [ ] Incorporate pruning mechanism.
     - [ ] Implement resetting function.
-    
+
 ## Week 3: Perform Experiments
 ### 2020-01-21
 - [ ] Step 4.
