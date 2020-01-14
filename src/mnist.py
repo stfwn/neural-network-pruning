@@ -24,7 +24,7 @@ def main():
     loss_function = nn.CrossEntropyLoss()
 
     # Connect optimizer to model params
-    optimizer = optim.SGD(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=1.2e-3)
 
     losses = []
 
