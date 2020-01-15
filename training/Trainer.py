@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from pruning import *
 
 class Trainer():
-    def __init__(self, model, dataset, batch_size=60, learning_rate=1.2e-3):
+    def __init__(self, model, dataset, device, batch_size=60, learning_rate=1.2e-3):
         if dataset == 'MNIST':
             self.dataset_name = dataset
             self.dataset = datasets.MNIST(root='./data/', train=True,
@@ -20,6 +20,7 @@ class Trainer():
         else:
             raise ValueError(f'Dataset "{dataset}" not supported.')
         
+        self.device = device
         self.model = model
 
         # Instantiate the mask
@@ -43,12 +44,14 @@ class Trainer():
             update_mask(self.model, self.mask, 0.2)
         
         for batch_data, batch_targets in self.loader:
+            batch_data = batch_data.to(self.device)
+            batch_targets = batch_targets.to(self.device)
 
             # Reset gradient to 0 (otherwise it accumulates)
             self.optimizer.zero_grad()
 
             predictions = self.model.forward(batch_data)
-            loss = self.loss_function(predictions, batch_targets)
+            loss = self.loss_function(predictions, batch_targets).to(self.device)
 
             # Compute delta terms and do a step of GD
             loss.backward()
@@ -64,6 +67,9 @@ class Trainer():
     def __compute_accuracy(self):
         correct = 0
         for batch_data, batch_targets in self.loader:
+            batch_data = batch_data.to(self.device)
+            batch_targets = batch_targets.to(self.device)
+
             predictions = self.model.forward(batch_data)
             classifications = predictions.argmax(dim=-1,
                     keepdim=True).view_as(batch_targets)

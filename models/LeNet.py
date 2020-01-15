@@ -8,6 +8,8 @@ class LeNet(nn.Module):
     def __init__(self, device='cpu', in_features=28*28, out_features=10):
         super(LeNet, self).__init__()
 
+        self.device = device
+
         self.layers = nn.Sequential(
                 nn.Linear(in_features=in_features, out_features=300, bias=True),
                 nn.LeakyReLU(negative_slope=0.05),
@@ -21,5 +23,5 @@ class LeNet(nn.Module):
             raise TypeError
 
         # Flatten image to fit net input dimensions.
-        x = x.view(x.shape[0], -1)
+        x = x.view(x.shape[0], -1).to(self.device)
         return self.layers.forward(x)

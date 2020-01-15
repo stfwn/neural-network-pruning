@@ -11,16 +11,26 @@ from testing.Tester import Tester
 from models.LeNet import LeNet
 from pruning import *
 # from models.Conv2 import Conv2
+from models.Conv6 import Conv6
 
 def main(args):
+    if torch.cuda.is_available() and not args.disable_cuda:
+        print('Using cuda.')
+        device = torch.device('cuda')
+        torch.set_default_tensor_type('torch.cuda.FloatTensor')
+    else:
+        print('Using cpu.')
+        device = torch.device('cpu')
+
     # Init model
     if args.model.lower() == 'lenet':
         model_name = 'lenet'
-        model = LeNet()
-    elif args.model.lower() == 'conv2':
-        model_name = 'conv2'
-        # model = Conv2()
-        raise ValueError('This is still a placeholder.')
+        model = LeNet(device=device)
+    elif args.model.lower() == 'conv6':
+        model_name = 'conv6'
+        model = Conv6(device=device)
+    else:
+        raise ValueError(f'Model "{args.model}" not supported.')
 
     if args.dataset.lower() == 'mnist':
         dataset = 'MNIST'
@@ -42,6 +52,8 @@ def main(args):
     tester = Tester(model, dataset)
 
     
+    trainer = Trainer(model, dataset, batch_size=args.batch_size, device=device)
+    tester = Tester(model, dataset, device=device)
     for i in range(args.epochs):
         print(f'Epoch {i}')
         # Train
@@ -56,7 +68,7 @@ def main(args):
     test_losses, test_accuracies = tester.losses, tester.accuracies
 
     # Save model
-    if args.save_model:
+    if not args.forget_model:
         now = dt.now().strftime('%Y-%m-%d-%H-%M')
         os.makedirs('./models/states/', exist_ok=True)
         torch.save(model.state_dict(), f'./models/states/{model_name}-{now}.pt')
@@ -79,7 +91,8 @@ def parse_args():
     parser.add_argument('-d' , '--dataset', type=str, required=True)
     parser.add_argument('-e', '--epochs', type=int, required=False, default=50)
     parser.add_argument('-b', '--batch-size', type=int, required=False, default=60)
-    parser.add_argument('-s', '--save-model', type=bool, required=False, default=True)
+    parser.add_argument('--forget-model', required=False, action='store_true')
+    parser.add_argument('--disable-cuda', required=False, action='store_true')
 
     return parser.parse_args()
 

@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class Tester():
-    def __init__(self, model, dataset, batch_size=60):
+    def __init__(self, model, dataset, device, batch_size=60):
         if dataset == 'MNIST':
             self.dataset_name = dataset
             self.dataset = datasets.MNIST(root='./data/', train=False,
@@ -14,6 +14,7 @@ class Tester():
         else:
             raise ValueError(f'Dataset "{dataset}" not supported.')
 
+        self.device = device
         self.model = model
         self.loader = data.DataLoader(self.dataset, batch_size=batch_size,
                 shuffle=True)
@@ -26,6 +27,9 @@ class Tester():
         correct = 0
         batch_losses = []
         for batch_data, batch_targets in self.loader:
+            batch_data = batch_data.to(self.device)
+            batch_targets = batch_targets.to(self.device)
+
             predictions = self.model.forward(batch_data)
             classifications = predictions.argmax(dim=-1,
                     keepdim=True).view_as(batch_targets)
