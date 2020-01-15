@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 
 class Trainer():
-    def __init__(self, model, dataset, batch_size=60, learning_rate=1.2e-3):
+    def __init__(self, model, dataset, device, batch_size=60, learning_rate=1.2e-3):
         if dataset == 'MNIST':
             self.dataset_name = dataset
             self.dataset = datasets.MNIST(root='./data/', train=True,
@@ -20,6 +20,7 @@ class Trainer():
         else:
             raise ValueError(f'Dataset "{dataset}" not supported.')
         
+        self.device = device
         self.model = model
         self.loader = data.DataLoader(self.dataset, batch_size=batch_size,
                 shuffle=True)
@@ -32,12 +33,13 @@ class Trainer():
         batch_losses = []
 
         for batch_data, batch_targets in self.loader:
+            batch_data = batch_data.to(self.device)
 
             # Reset gradient to 0 (otherwise it accumulates)
             self.optimizer.zero_grad()
 
             predictions = self.model.forward(batch_data)
-            loss = self.loss_function(predictions, batch_targets)
+            loss = self.loss_function(predictions, batch_targets).to(self.device)
 
             # Compute delta terms and do a step of GD
             loss.backward()
