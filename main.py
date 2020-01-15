@@ -47,7 +47,8 @@ def main(args):
         # Train
         model.train()
         trainer.train_epoch(i)
-        # Test
+        # To print out the sparsity:
+        # print('Sparsity : {}'.format(get_sparsity(trainer.model)))        # Test
         model.eval()
         tester.test_epoch()
 
