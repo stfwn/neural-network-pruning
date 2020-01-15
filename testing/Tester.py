@@ -28,6 +28,7 @@ class Tester():
         batch_losses = []
         for batch_data, batch_targets in self.loader:
             batch_data = batch_data.to(self.device)
+            batch_targets = batch_targets.to(self.device)
 
             predictions = self.model.forward(batch_data)
             classifications = predictions.argmax(dim=-1,

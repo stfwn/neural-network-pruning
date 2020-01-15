@@ -34,6 +34,7 @@ class Trainer():
 
         for batch_data, batch_targets in self.loader:
             batch_data = batch_data.to(self.device)
+            batch_targets = batch_targets.to(self.device)
 
             # Reset gradient to 0 (otherwise it accumulates)
             self.optimizer.zero_grad()
@@ -55,6 +56,9 @@ class Trainer():
     def __compute_accuracy(self):
         correct = 0
         for batch_data, batch_targets in self.loader:
+            batch_data = batch_data.to(self.device)
+            batch_targets = batch_targets.to(self.device)
+
             predictions = self.model.forward(batch_data)
             classifications = predictions.argmax(dim=-1,
                     keepdim=True).view_as(batch_targets)
