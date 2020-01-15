@@ -52,17 +52,18 @@ def main(args):
             pruning_rate=args.pruning_rate, pruning_interval=args.pruning_interval)
     tester = Tester(model, dataset, device=device)
     for i in range(args.epochs):
-        print(f'Epoch {i}')
+        print(f'======= Epoch {i} ======= =======')
         # Train
         model.train()
         trainer.train_epoch(i)
 
-        if args.pruning_rate > 0:
-            print(f'Sparsity : {get_sparsity(trainer.model)}')
-
         # Test
         model.eval()
         tester.test_epoch()
+        print(f'\taccuracy\tloss\n' +
+                f'train\t{trainer.accuracies[-1]:.5f}\t{trainer.losses[-1]:.5f}\n' +
+                f'test\t{tester.accuracies[-1]:.5f}\t{tester.losses[-1]:.5f}\n' +
+                f'sparsity:{get_sparsity(trainer.model):.5f}')
 
     train_losses, train_accuracies = trainer.losses, trainer.accuracies
     test_losses, test_accuracies = tester.losses, tester.accuracies
