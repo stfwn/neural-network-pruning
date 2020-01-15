@@ -12,7 +12,8 @@ import matplotlib.pyplot as plt
 from pruning import *
 
 class Trainer():
-    def __init__(self, model, dataset, device, batch_size=60, learning_rate=1.2e-3):
+    def __init__(self, model, dataset, device, pruning_rate, pruning_interval,
+            batch_size=60, learning_rate=1.2e-3):
         if dataset == 'MNIST':
             self.dataset_name = dataset
             self.dataset = datasets.MNIST(root='./data/', train=True,
@@ -25,6 +26,8 @@ class Trainer():
 
         # Instantiate the mask
         self.mask = init_mask(model)
+        self.pruning_rate = pruning_rate
+        self.pruning_interval = pruning_interval
 
         self.loader = data.DataLoader(self.dataset, batch_size=batch_size,
                 shuffle=True)
@@ -40,8 +43,9 @@ class Trainer():
         # I hardcoded some values, (prune 20% every 5 epochs),
         # but you should add it as a
         # parameter in argparse, as well as the rate
-        if epoch_num % 5 == 0 and epoch_num>0:
-            update_mask(self.model, self.mask, 0.2)
+        if self.pruning_rate > 0:
+            if epoch_num % self.pruning_interval == 0 and epoch_num > 0:
+                update_mask(self.model, self.mask, self.pruning_rate)
         
         for batch_data, batch_targets in self.loader:
             batch_data = batch_data.to(self.device)

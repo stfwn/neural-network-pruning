@@ -43,20 +43,24 @@ def main(args):
         print(f'Loading last pretrained model from ./models/states/{filename}')
         model.load_state_dict(torch.load(f'./models/states/{filename}'))
         model.eval()
-        test(model, dataset)
+        tester = Tester(model, dataset, device=device)
+        tester.test_epoch()
         sys.exit(0)
 
     # Train/test loop
-    
-    trainer = Trainer(model, dataset, batch_size=args.batch_size, device=device)
+    trainer = Trainer(model, dataset, batch_size=args.batch_size, device=device,
+            pruning_rate=args.pruning_rate, pruning_interval=args.pruning_interval)
     tester = Tester(model, dataset, device=device)
     for i in range(args.epochs):
         print(f'Epoch {i}')
         # Train
         model.train()
         trainer.train_epoch(i)
-        # To print out the sparsity:
-        # print('Sparsity : {}'.format(get_sparsity(trainer.model)))        # Test
+
+        if args.pruning_rate > 0:
+            print(f'Sparsity : {get_sparsity(trainer.model)}')
+
+        # Test
         model.eval()
         tester.test_epoch()
 
@@ -89,8 +93,17 @@ def parse_args():
     parser.add_argument('-b', '--batch-size', type=int, required=False, default=60)
     parser.add_argument('--forget-model', required=False, action='store_true')
     parser.add_argument('--disable-cuda', required=False, action='store_true')
+    parser.add_argument('--pruning-rate', type=float, required=False, default=0)
+    parser.add_argument('--pruning-interval', type=int, required=False, default=0)
+    args = parser.parse_args()
+    if args.pruning_rate > 1:
+        raise ValueError('Pruning rate cannot be > 1.')
+    if args.pruning_rate > 0 and args.pruning_interval == 0:
+        raise ValueError('Pruning interval of 0 makes no sense.')
+    if args.pruning_rate == 0 and args.pruning_interval > 0:
+        raise ValueError('Pruning rate of 0 makes no sense.')
 
-    return parser.parse_args()
+    return args
 
 
 if __name__ == "__main__":
