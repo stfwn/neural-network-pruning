@@ -27,6 +27,8 @@ def main(args):
     elif args.model.lower() == 'conv6':
         model_name = 'conv6'
         model = Conv6(device=device)
+    else:
+        raise ValueError(f'Model "{args.model}" not supported.')
 
     if args.dataset.lower() == 'mnist':
         dataset = 'MNIST'
