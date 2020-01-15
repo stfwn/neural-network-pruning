@@ -10,8 +10,7 @@ from training.Trainer import Trainer
 from testing.Tester import Tester
 from models.LeNet import LeNet
 from pruning import *
-# from models.Conv2 import Conv2
-# from models.Conv6 import Conv6
+from models.Conv6 import Conv6
 
 def main(args):
     if torch.cuda.is_available() and not args.disable_cuda:
