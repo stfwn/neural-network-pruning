@@ -14,8 +14,10 @@ from models.LeNet import LeNet
 def main(args):
     # Init model
     if args.model.lower() == 'lenet':
+        model_name = 'lenet'
         model = LeNet()
     elif args.model.lower() == 'conv2':
+        model_name = 'conv2'
         # model = Conv2()
         raise ValueError('This is still a placeholder.')
 
@@ -25,9 +27,8 @@ def main(args):
         raise ValueError(f'Dataset "{args.dataset}" not supported.')
 
     if args.load_last_pretrained:
-        # TODO: make distinction between different models when we have
-        # different models. Otherwise this will bug out.
-        filename = sorted(os.listdir('./models/states/'))[-1]
+        filename = [x for x in sorted(os.listdir('./models/states/')) if
+                model_name in x][-1]
         print(f'Loading last pretrained model from ./models/states/{filename}')
         model.load_state_dict(torch.load(f'./models/states/{filename}'))
         model.eval()
@@ -54,7 +55,7 @@ def main(args):
     if args.save_model:
         now = dt.now().strftime('%Y-%m-%d-%H-%M')
         os.makedirs('./models/states/', exist_ok=True)
-        torch.save(model.state_dict(), f'./models/states/{now}.pt')
+        torch.save(model.state_dict(), f'./models/states/{model_name}-{now}.pt')
 
     # TODO: replace with plot and save shizzle.
     print(f'train_losses={train_losses}')
