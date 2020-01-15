@@ -11,7 +11,7 @@ from testing.Tester import Tester
 from models.LeNet import LeNet
 from pruning import *
 # from models.Conv2 import Conv2
-from models.Conv6 import Conv6
+# from models.Conv6 import Conv6
 
 def main(args):
     if torch.cuda.is_available() and not args.disable_cuda:
@@ -47,10 +47,6 @@ def main(args):
         sys.exit(0)
 
     # Train/test loop
-
-    trainer = Trainer(model, dataset, args.batch_size)
-    tester = Tester(model, dataset)
-
     
     trainer = Trainer(model, dataset, batch_size=args.batch_size, device=device)
     tester = Tester(model, dataset, device=device)
