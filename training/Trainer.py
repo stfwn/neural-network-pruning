@@ -9,7 +9,7 @@ from torchvision import datasets, transforms
 
 import numpy as np
 import matplotlib.pyplot as plt
-
+from pruning import *
 
 class Trainer():
     def __init__(self, model, dataset, batch_size=60, learning_rate=1.2e-3):
@@ -21,6 +21,10 @@ class Trainer():
             raise ValueError(f'Dataset "{dataset}" not supported.')
         
         self.model = model
+
+        # Instantiate the mask
+        self.mask = init_mask(model)
+
         self.loader = data.DataLoader(self.dataset, batch_size=batch_size,
                 shuffle=True)
         self.loss_function = nn.CrossEntropyLoss() 
@@ -28,9 +32,16 @@ class Trainer():
         self.losses = []
         self.accuracies = []
 
-    def train_epoch(self):
+    def train_epoch(self, epoch_num):
         batch_losses = []
 
+        # Every n epochs, prune
+        # I hardcoded some values, (prune 20% every 5 epochs),
+        # but you should add it as a
+        # parameter in argparse, as well as the rate
+        if epoch_num % 5 == 0 and epoch_num>0:
+            update_mask(self.model, self.mask, 0.2)
+        
         for batch_data, batch_targets in self.loader:
 
             # Reset gradient to 0 (otherwise it accumulates)
@@ -42,7 +53,7 @@ class Trainer():
             # Compute delta terms and do a step of GD
             loss.backward()
             self.optimizer.step()
-
+            apply_mask(self.model, self.mask)
             # Keep track of loss
             batch_losses.append(loss.item())
         epoch_loss = np.mean(batch_losses)

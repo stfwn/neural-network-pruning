@@ -9,6 +9,7 @@ import torch
 from training.Trainer import Trainer
 from testing.Tester import Tester
 from models.LeNet import LeNet
+from pruning import *
 # from models.Conv2 import Conv2
 
 def main(args):
@@ -36,14 +37,16 @@ def main(args):
         sys.exit(0)
 
     # Train/test loop
+
     trainer = Trainer(model, dataset, args.batch_size)
     tester = Tester(model, dataset)
+
+    
     for i in range(args.epochs):
         print(f'Epoch {i}')
         # Train
         model.train()
-        trainer.train_epoch()
-
+        trainer.train_epoch(i)
         # Test
         model.eval()
         tester.test_epoch()
