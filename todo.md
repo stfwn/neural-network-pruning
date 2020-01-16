@@ -31,9 +31,9 @@
     - [ ] Optional: do the same for the CIFAR10 dataset.
 
 ### 2020-01-16
-- [ ] Step 3.
+- [x] Step 3.
     - [x] Incorporate pruning mechanism.
-    - [ ] Implement resetting function.
+    - [x] Implement resetting function.
 
 ## Week 3: Perform Experiments
 ### 2020-01-21
