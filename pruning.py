@@ -55,7 +55,7 @@ def update_mask(model, mask, rate):
             # Get indices of sorted weights
             indices = flat_layer.abs().argsort(descending=False)
 
-            # Calculate how many weights we still need to pruen
+            # Calculate how many weights we still need to prune
             num_pruned = (layer_mask==0).sum().item()
             num_unpruned = layer_mask.numel() - num_pruned
             to_prune = num_pruned + int(rate*num_unpruned)

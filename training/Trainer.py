@@ -39,13 +39,12 @@ class Trainer():
     def train_epoch(self, epoch_num):
         batch_losses = []
 
-        # Every n epochs, prune
-        # I hardcoded some values, (prune 20% every 5 epochs),
-        # but you should add it as a
-        # parameter in argparse, as well as the rate
+        # Every n epochs, prune and reset weights.
         if self.pruning_rate > 0:
             if epoch_num % self.pruning_interval == 0 and epoch_num > 0:
                 update_mask(self.model, self.mask, self.pruning_rate)
+                self.model.reset_weights()
+                apply_mask(self.model, self.mask)
         
         for batch_data, batch_targets in self.loader:
             batch_data = batch_data.to(self.device)
@@ -80,4 +79,3 @@ class Trainer():
             correct += classifications.eq(batch_targets).sum().item()
         accuracy = correct / len(self.dataset) * 100
         return accuracy
-

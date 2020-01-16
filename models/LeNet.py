@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from copy import deepcopy
 
 class LeNet(nn.Module):
     """ LeNet 300-100 network with in/out dimensions set to the dimensions of
@@ -18,6 +19,8 @@ class LeNet(nn.Module):
                 nn.Linear(in_features=100, out_features=out_features, bias=True)
             ).to(device)
 
+        self.save_weights()
+
     def forward(self, x):
         if type(x) is not torch.Tensor:
             raise TypeError
@@ -25,3 +28,13 @@ class LeNet(nn.Module):
         # Flatten image to fit net input dimensions.
         x = x.view(x.shape[0], -1).to(self.device)
         return self.layers.forward(x)
+
+    def save_weights(self):
+        print('Saving weights.')
+        # Deepcopy to avoid just saving references
+        self.saved_weights = deepcopy(list(self.parameters()))
+
+    def reset_weights(self):
+        with torch.no_grad():
+            for saved, current in zip(self.saved_weights, self.parameters()):
+                current.data = saved.data
