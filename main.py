@@ -14,6 +14,13 @@ from models.Conv6 import Conv6
 
 from torch.utils.tensorboard import SummaryWriter
 import json
+import numpy as np
+
+def set_seed(seed):
+    torch.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    np.random.seed(seed)
 
 def main(args):
     if torch.cuda.is_available() and not args.disable_cuda:
@@ -109,6 +116,7 @@ def parse_args():
     parser.add_argument('--disable-cuda', required=False, action='store_true')
     parser.add_argument('--pruning-rate', type=float, required=False, default=0)
     parser.add_argument('--pruning-interval', type=int, required=False, default=0)
+    parser.add_argument(--'seed', type=int, default=42)
     args = parser.parse_args()
     if args.pruning_rate > 1:
         raise ValueError('Pruning rate cannot be > 1.')
@@ -122,4 +130,5 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
+    set_seed(args.seed)
     main(args)
