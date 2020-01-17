@@ -38,11 +38,15 @@
 ## Week 3: Perform Experiments
 ### 2020-01-21
 - [ ] Step 4.
-    - [ ] Experiment with different initialization schemas.
-          - [ ] Pick some different schema's to try, figure out what they are
+    - [ ] Experiment with different initialization schemas
+        - [ ] Pick different schema's to try, figure out what they are
                 and decide who does which one.
-          - [ ] Answer the question: does the initialization schema of a
-            network affect its robustness to pruning?
+        - [ ] Every schema is to be experimented with a total of 8 times. 
+                Do this with certain rates for pruning rate and pruning interval.
+                Make sure to document which models are result of which initialisation and what variables.
+        - [ ] Answer the question: does the initialization schema of a
+                network affect its robustness to pruning? (Compare the results of the different initialions and
+                draw a conclusion)
 
 ### 2020-01-23
 - [ ] Step 5.
@@ -54,6 +58,9 @@
 - [ ] Step 6 & 7.
     - [ ] Based on the above results, is it possible, then, to construct a
           custom initialization schema that improves the robustness further?
+        - [ ] Compare the different initialisations. Is there a major difference, and if so, what component
+                is responsible? Is it usable for a custom initialisation schema?
+        - [ ] If it is possible to construct a custom schema, let's experiment with it. Does it improve robustness?
     - [ ] Check whether the schema built on (6) generalizes to other pruning methods.
 
 ### 2020-01-28
