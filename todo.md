@@ -58,9 +58,9 @@
 - [ ] Step 6 & 7.
     - [ ] Based on the above results, is it possible, then, to construct a
           custom initialization schema that improves the robustness further?
-          - [ ] Compare the different initialisations. Is there a major difference, and if so, what component
+        - [ ] Compare the different initialisations. Is there a major difference, and if so, what component
                 is responsible? Is it usable for a custom initialisation schema?
-          - [ ] If it is possible to construct a custom schema, let's experiment with it. Does it improve robustness?
+        - [ ] If it is possible to construct a custom schema, let's experiment with it. Does it improve robustness?
     - [ ] Check whether the schema built on (6) generalizes to other pruning methods.
 
 ### 2020-01-28
