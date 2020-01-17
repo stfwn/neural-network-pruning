@@ -50,6 +50,7 @@ def main(args):
         sys.exit(0)
     
     # TODO : add run name
+    # writer = SummaryWriter(log_dir='...', comment='...')
     writer = SummaryWriter()
     writer.add_text('hparams', json.dumps(vars(args)))
     # Train/test loop
