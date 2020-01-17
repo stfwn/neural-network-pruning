@@ -12,6 +12,9 @@ from models.LeNet import LeNet
 from pruning import *
 from models.Conv6 import Conv6
 
+from torch.utils.tensorboard import SummaryWriter
+import json
+
 def main(args):
     if torch.cuda.is_available() and not args.disable_cuda:
         print('Using cuda.')
@@ -45,7 +48,10 @@ def main(args):
         tester = Tester(model, dataset, device=device)
         tester.test_epoch()
         sys.exit(0)
-
+    
+    # TODO : add run name
+    writer = SummaryWriter()
+    writer.add_text('hparams', json.dumps(vars(args)))
     # Train/test loop
     trainer = Trainer(model, dataset, batch_size=args.batch_size, device=device,
             pruning_rate=args.pruning_rate, pruning_interval=args.pruning_interval)
@@ -64,6 +70,13 @@ def main(args):
                 f'test\t{tester.accuracies[-1]:.5f}\t{tester.losses[-1]:.5f}\n' +
                 f'sparsity:{get_sparsity(trainer.model):.5f}')
 
+        # Plot stuff in tensorboard. Might want to wrap this into a func
+        writer.add_scalar('acc/train', trainer.accuracies[-1], i)
+        writer.add_scalar('acc/test', tester.accuracies[-1], i)
+        writer.add_scalar('loss/train', trainer.losses[-1], i)
+        writer.add_scalar('loss/test', tester.losses[-1], i)
+        writer.add_scalar('sparsity/sparsity', get_sparsity(trainer.model), i)
+        
     train_losses, train_accuracies = trainer.losses, trainer.accuracies
     test_losses, test_accuracies = tester.losses, tester.accuracies
 
