@@ -38,12 +38,12 @@
 ## Week 3: Perform Experiments
 ### 2020-01-21
 - [ ] Step 4.
-    - [ ] Experiment with different initialization schemas.
+    - [ ] Experiment with different initialization schemas
           - [ ] Pick different schema's to try, figure out what they are
                 and decide who does which one.
-                - [ ] Every schema is to be experimented with a total of 8 times. 
-                      Do this with certain rates for pruning rate and pruning interval.
-                      Make sure to document which models are result of which initialisation and what variables.
+          - [ ] Every schema is to be experimented with a total of 8 times. 
+                Do this with certain rates for pruning rate and pruning interval.
+                Make sure to document which models are result of which initialisation and what variables.
           - [ ] Answer the question: does the initialization schema of a
                 network affect its robustness to pruning? (Compare the results of the different initialions and
                 draw a conclusion)
