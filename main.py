@@ -120,12 +120,18 @@ def parse_args():
     parser.add_argument('--pruning-interval', type=int, required=False, default=0)
     parser.add_argument('--seed', type=int, default=42)
     args = parser.parse_args()
+
     if args.pruning_rate > 1:
         raise ValueError('Pruning rate cannot be > 1.')
     if args.pruning_rate > 0 and args.pruning_interval == 0:
         raise ValueError('Pruning interval of 0 makes no sense.')
     if args.pruning_rate == 0 and args.pruning_interval > 0:
         raise ValueError('Pruning rate of 0 makes no sense.')
+    if args.model.lower() == 'lenet' and args.dataset.lower() == 'cifar10':
+        raise ValueError('Model LeNet is not configured for dataset CIFAR10.')
+    if args.model.lower() == 'conv6' and args.dataset.lower() == 'mnist':
+        raise ValueError('Model Conv6 is not configured for dataset MNIST.')
+
 
     return args
 
