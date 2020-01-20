@@ -25,6 +25,7 @@ def set_seed(seed):
     np.random.seed(seed)
 
 def main(args):
+    # Check for cuda
     if torch.cuda.is_available() and not args.disable_cuda:
         print('Using cuda.')
         device = torch.device('cuda')
@@ -33,7 +34,7 @@ def main(args):
         print('Using cpu.')
         device = torch.device('cpu')
 
-    # Init model
+    # Init model itself
     if args.model.lower() == 'lenet':
         model_name = 'lenet'
         model = LeNet(device=device)
@@ -43,12 +44,11 @@ def main(args):
     else:
         raise ValueError(f'Model "{args.model}" not supported.')
 
-
+    # Apply alternative init method if instructed to do so 
     if args.initialization:
         init_weights(model, args.initialization)
 
-    sys.exit('bye')
-
+    # Init dataset
     if args.dataset.lower() == 'mnist':
         dataset = 'MNIST'
     elif args.dataset.lower() == 'cifar10':
@@ -56,6 +56,7 @@ def main(args):
     else:
         raise ValueError(f'Dataset "{args.dataset}" not supported.')
 
+    # Load last pretrained, test and exit if instructed to do so.
     if args.load_last_pretrained:
         filename = [x for x in sorted(os.listdir('./models/states/')) if
                 model_name in x][-1]
@@ -69,6 +70,7 @@ def main(args):
     # TODO : add run name
     writer = SummaryWriter(log_dir='./results')
     writer.add_text('hparams', json.dumps(vars(args)))
+
     # Train/test loop
     trainer = Trainer(model, dataset, batch_size=args.batch_size, device=device,
             pruning_rate=args.pruning_rate, pruning_interval=args.pruning_interval)
@@ -103,11 +105,6 @@ def main(args):
         os.makedirs('./models/states/', exist_ok=True)
         torch.save(model.state_dict(), f'./models/states/{model_name}-{now}.pt')
 
-    # TODO: replace with plot and save shizzle.
-    print(f'train_losses={train_losses}')
-    print(f'train_accuracies={train_accuracies}')
-    print(f'test_losses={test_losses}')
-    print(f'test_accuracies={test_accuracies}')
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Entrypoint for training/testing models in this repository.')
