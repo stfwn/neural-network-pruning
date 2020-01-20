@@ -43,6 +43,8 @@ def main(args):
 
     if args.dataset.lower() == 'mnist':
         dataset = 'MNIST'
+    elif args.dataset.lower() == 'cifar10':
+        dataset = 'CIFAR10'
     else:
         raise ValueError(f'Dataset "{args.dataset}" not supported.')
 

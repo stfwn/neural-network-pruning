@@ -11,6 +11,10 @@ class Tester():
             self.dataset_name = dataset
             self.dataset = datasets.MNIST(root='./data/', train=False,
                     download=True, transform=transforms.ToTensor())
+        elif dataset == 'CIFAR10':
+            self.dataset_name = dataset
+            self.dataset = datasets.CIFAR10(root='./data/', train=False,
+                    download=True, transform=transforms.ToTensor())
         else:
             raise ValueError(f'Dataset "{dataset}" not supported.')
 
