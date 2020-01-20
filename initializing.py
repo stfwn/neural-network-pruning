@@ -4,20 +4,18 @@ def init_weights(model, method):
     if not method:
         print('Init method: default (?)')
         return
-    elif method == 'kaiming-uniform':
-        print('Init method: kaiming-uniform.')
-        model.apply(kaiming_uniform)
-    elif method == 'kaiming-normal':
-        print('Init method: kaiming-normal.')
-        model.apply(kaiming_normal)
-    elif method == 'xavier-uniform':
-        print('Init method: xavier-uniform.')
-        model.apply(xavier_uniform)
-    elif method == 'xavier-normal':
-        print('Init method: xavier-normal.')
-        model.apply(xavier_normal)
-    else:
-        raise ValueError(f'Init method {method} not implemented.')
+    methods = {
+            'kaiming-uniform': kaiming_uniform,
+            'kaiming-normal': kaiming_normal,
+            'xavier-uniform': xavier_uniform,
+            'xavier-normal': xavier_normal,
+            }
+    try:
+        fn = methods[method]
+        print(f'Init method: {method}')
+        model.apply(fn)
+    except:
+        raise ValueError(f'Unkown init method {method}.')
 
 def kaiming_uniform(m):
     if type(m) is nn.Linear or type(m) is nn.Conv2d:
