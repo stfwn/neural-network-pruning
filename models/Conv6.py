@@ -8,7 +8,7 @@ class Conv6(ExpandedModule):
     used by Frankle & Carbin (2019) with in/out dimensions set to the
     dimensions of the CIFAR-10 dataset. """
 
-    def __init__(self, device='cpu', in_features=28*28, out_features=10):
+    def __init__(self, device='cpu'):
         super(Conv6, self).__init__()
         self.device = device
         self.conv = nn.Sequential(
@@ -31,11 +31,11 @@ class Conv6(ExpandedModule):
                 nn.MaxPool2d(kernel_size=2, stride=2)).to(device)
 
         self.fc = nn.Sequential(
-                nn.Linear(in_features=4096, out_features=256, bias=True),
+                nn.Linear(in_features=4096, out_features=256),
                 nn.ReLU(),
-                nn.Linear(in_features=256, out_features=256, bias=True),
+                nn.Linear(in_features=256, out_features=256),
                 nn.ReLU(),
-                nn.Linear(in_features=256, out_features=out_features, bias=True)
+                nn.Linear(in_features=256, out_features=10)
             ).to(device)
 
         self.save_weights()
@@ -47,5 +47,5 @@ class Conv6(ExpandedModule):
         # Do convolutions
         x = self.conv(x).to(self.device)
         # Flatten image to fit fc input dimensions.
-        x = x.view(x.shape[0], -1).to(self.device)
+        x = x.flatten(start_dim=1)
         return self.fc.forward(x)
