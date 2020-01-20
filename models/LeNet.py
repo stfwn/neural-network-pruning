@@ -1,8 +1,9 @@
 import torch
 import torch.nn as nn
-from copy import deepcopy
 
-class LeNet(nn.Module):
+from models.ExpandedModule import ExpandedModule
+
+class LeNet(ExpandedModule):
     """ LeNet 300-100 network with in/out dimensions set to the dimensions of
     the MNIST dataset. """
 
@@ -28,13 +29,3 @@ class LeNet(nn.Module):
         # Flatten image to fit net input dimensions.
         x = x.view(x.shape[0], -1).to(self.device)
         return self.layers.forward(x)
-
-    def save_weights(self):
-        print('Saving weights.')
-        # Deepcopy to avoid just saving references
-        self.saved_weights = deepcopy(list(self.parameters()))
-
-    def reset_weights(self):
-        with torch.no_grad():
-            for saved, current in zip(self.saved_weights, self.parameters()):
-                current.data = saved.data

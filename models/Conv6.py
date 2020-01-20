@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
-
 from copy import deepcopy
+from models.ExpandedModule import ExpandedModule
 
-class Conv6(nn.Module):
+class Conv6(ExpandedModule):
     """ Conv6 network, a varaint of VGG from Simonyan & Zisserman (2014), as
     used by Frankle & Carbin (2019) with in/out dimensions set to the
     dimensions of the CIFAR-10 dataset. """
@@ -49,13 +49,3 @@ class Conv6(nn.Module):
         # Flatten image to fit fc input dimensions.
         x = x.view(x.shape[0], -1).to(self.device)
         return self.fc.forward(x)
-
-    def save_weights(self):
-        print('Saving weights.')
-        # Deepcopy to avoid just saving references
-        self.saved_weights = deepcopy(list(self.parameters()))
-
-    def reset_weights(self):
-        with torch.no_grad():
-            for saved, current in zip(self.saved_weights, self.parameters()):
-                current.data = saved.data
