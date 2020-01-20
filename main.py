@@ -9,8 +9,10 @@ import torch
 from training.Trainer import Trainer
 from testing.Tester import Tester
 from models.LeNet import LeNet
-from pruning import *
 from models.Conv6 import Conv6
+
+from pruning import *
+from initializing import init_weights
 
 from torch.utils.tensorboard import SummaryWriter
 import json
@@ -41,6 +43,12 @@ def main(args):
     else:
         raise ValueError(f'Model "{args.model}" not supported.')
 
+
+    if args.initialization:
+        init_weights(model, args.initialization)
+
+    sys.exit('bye')
+
     if args.dataset.lower() == 'mnist':
         dataset = 'MNIST'
     elif args.dataset.lower() == 'cifar10':
@@ -59,8 +67,7 @@ def main(args):
         sys.exit(0)
     
     # TODO : add run name
-    # writer = SummaryWriter(log_dir='...', comment='...')
-    writer = SummaryWriter()
+    writer = SummaryWriter(log_dir='./results')
     writer.add_text('hparams', json.dumps(vars(args)))
     # Train/test loop
     trainer = Trainer(model, dataset, batch_size=args.batch_size, device=device,
@@ -114,6 +121,7 @@ def parse_args():
     parser.add_argument('-d' , '--dataset', type=str, required=True)
     parser.add_argument('-e', '--epochs', type=int, required=False, default=50)
     parser.add_argument('-b', '--batch-size', type=int, required=False, default=60)
+    parser.add_argument('-i', '--initialization', type=str, required=False)
     parser.add_argument('--forget-model', required=False, action='store_true')
     parser.add_argument('--disable-cuda', required=False, action='store_true')
     parser.add_argument('--pruning-rate', type=float, required=False, default=0)
@@ -131,7 +139,6 @@ def parse_args():
         raise ValueError('Model LeNet is not configured for dataset CIFAR10.')
     if args.model.lower() == 'conv6' and args.dataset.lower() == 'mnist':
         raise ValueError('Model Conv6 is not configured for dataset MNIST.')
-
 
     return args
 
