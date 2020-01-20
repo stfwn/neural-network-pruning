@@ -73,7 +73,9 @@ def main(args):
 
     # Train/test loop
     trainer = Trainer(model, dataset, batch_size=args.batch_size, device=device,
-            pruning_rate=args.pruning_rate, pruning_interval=args.pruning_interval)
+            pruning_rate=args.pruning_rate,
+            pruning_interval=args.pruning_interval,
+            learning_rate=args.learning_rate)
     tester = Tester(model, dataset, device=device)
     for i in range(args.epochs):
         print(f'======= Epoch {i} ======= =======')
@@ -90,7 +92,7 @@ def main(args):
                 f'sparsity:{get_sparsity(trainer.model):.5f}')
 
         # Write Tensorboard log
-        log(writer, model, tester, trainer)
+        log(writer, model, tester, trainer, i)
 
     # Save model
     if not args.forget_model:
@@ -99,7 +101,7 @@ def main(args):
         torch.save(model.state_dict(), f'./models/states/{model_name}-{now}.pt')
 
 
-def log(writer, model, tester, trainer):
+def log(writer, model, tester, trainer, i):
     writer.add_scalar('acc/train', trainer.accuracies[-1], i)
     writer.add_scalar('acc/test', tester.accuracies[-1], i)
     writer.add_scalar('loss/train', trainer.losses[-1], i)
@@ -120,6 +122,8 @@ def parse_args():
     parser.add_argument('-e', '--epochs', type=int, required=False, default=50)
     parser.add_argument('-b', '--batch-size', type=int, required=False, default=60)
     parser.add_argument('-i', '--initialization', type=str, required=False)
+    parser.add_argument('-l', '--learning-rate', type=float, required=False,
+            default=1.2e-3)
     parser.add_argument('--forget-model', required=False, action='store_true')
     parser.add_argument('--disable-cuda', required=False, action='store_true')
     parser.add_argument('--pruning-rate', type=float, required=False, default=0)
