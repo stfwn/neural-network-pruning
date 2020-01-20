@@ -89,21 +89,22 @@ def main(args):
                 f'test\t{tester.accuracies[-1]:.5f}\t{tester.losses[-1]:.5f}\n' +
                 f'sparsity:{get_sparsity(trainer.model):.5f}')
 
-        # Plot stuff in tensorboard. Might want to wrap this into a func
-        writer.add_scalar('acc/train', trainer.accuracies[-1], i)
-        writer.add_scalar('acc/test', tester.accuracies[-1], i)
-        writer.add_scalar('loss/train', trainer.losses[-1], i)
-        writer.add_scalar('loss/test', tester.losses[-1], i)
-        writer.add_scalar('sparsity/sparsity', get_sparsity(trainer.model), i)
-        
-    train_losses, train_accuracies = trainer.losses, trainer.accuracies
-    test_losses, test_accuracies = tester.losses, tester.accuracies
+        # Write Tensorboard log
+        log(writer, model, tester, trainer)
 
     # Save model
     if not args.forget_model:
         now = dt.now().strftime('%Y-%m-%d-%H-%M')
         os.makedirs('./models/states/', exist_ok=True)
         torch.save(model.state_dict(), f'./models/states/{model_name}-{now}.pt')
+
+
+def log(writer, model, tester, trainer):
+    writer.add_scalar('acc/train', trainer.accuracies[-1], i)
+    writer.add_scalar('acc/test', tester.accuracies[-1], i)
+    writer.add_scalar('loss/train', trainer.losses[-1], i)
+    writer.add_scalar('loss/test', tester.losses[-1], i)
+    writer.add_scalar('sparsity/sparsity', get_sparsity(model), i)
 
 
 def parse_args():
