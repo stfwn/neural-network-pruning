@@ -4,7 +4,7 @@
 
 | Param              | Different values           |
 |--------------------|----------------------------|
-| Seed               | 42, 69, 420                |
+| Seed               | 42, 43, 44                 |
 | Model/Dataset pair | LeNet/MNIST, Conv6/CIFAR10 |
 | Runs               | 5 x each                   |
 | Init schemes       | Xavier, Kaiming            |
@@ -41,5 +41,5 @@ python main.py
 | Who    | Seed |
 |--------|------|
 | Ellis  | 42   |
-| Stefan | 69   |
-| Thomas | 420  |
+| Stefan | 43   |
+| Thomas | 44   |
