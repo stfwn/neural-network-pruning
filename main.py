@@ -109,12 +109,12 @@ def log(writer, model, tester, trainer, i):
     writer.add_scalar('loss/train', trainer.losses[-1], i)
     writer.add_scalar('loss/test', tester.losses[-1], i)
     writer.add_scalar('sparsity/sparsity', get_sparsity(model), i)
-
-    for layer in model.layers:
-        if type(layer) is nn.Linear or type(layer) is nn.Conv2d:
-            writer.add_histogram('weight', layer.weight, i)
-            writer.add_histogram('bias', layer.bias, i)
-            writer.add_histogram('weight.gradient', layer.weight.grad, i)
+    all_weights = torch.cat([layer.weight.flatten() for layer in model.layers if type(layer) is nn.Linear or type(layer) is nn.Conv2d], axis=0)
+    all_biases = torch.cat([layer.bias.flatten() for layer in model.layers if type(layer) is nn.Linear or type(layer) is nn.Conv2d], axis=0)
+    all_gradients = torch.cat([layer.weight.grad.flatten() for layer in model.layers if type(layer) is nn.Linear or type(layer) is nn.Conv2d], axis=0)
+    writer.add_histogram('weight', all_weights, i)
+    writer.add_histogram('bias', all_biases, i)
+    writer.add_histogram('weight.gradient', all_gradients, i)
 
 
 def parse_args():
