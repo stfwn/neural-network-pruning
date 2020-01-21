@@ -39,10 +39,10 @@
 ## Week 3: Perform Experiments
 ### 2020-01-21
 - [ ] Finalize code.
-    - [ ] Stefan: Check bias is unaffected by alternative inits.
+    - [x] Stefan: Check bias is unaffected by alternative inits.
     - [ ] Thomas: Finalize logging. Everything neat.
 - [ ] Ellis: write for paper: methods
-- [ ] All: divide the experiment runs. Structure this in `experiments.md`
+- [x] All: divide the experiment runs. Structure this in `experiments.md`
 
 ### 2020-01-22 -> 2020-01-24
 - [ ] All: Start running experiments as divided on 2020-01-21.
