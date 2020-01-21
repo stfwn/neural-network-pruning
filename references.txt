@@ -1,0 +1,15 @@
+@article{franklecarbin2019,
+author = "Frankle, Jonathan and Carbin, Michael",
+title = "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks",
+year = "2018-03-09",
+journal = "ICLR 2019"
+URL = "https://arxiv.org/pdf/1803.03635.pdf"
+}
+
+@article{arxiv1906.02773,
+abstract = "The success of lottery ticket initializations (Frankle and Carbin, 2019) suggests that small, sparsified networks can be trained so long as the network is initialized appropriately. Unfortunately, finding these "winning ticket" initializations is computationally expensive. One potential solution is...",
+author = "Morcos, Ari S. and Yu, Haonan and Paganini, Michela and Tian, Yuandong",
+title = "One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers",
+year = "2019-06-06",
+URL = "https://arxiv.org/pdf/1906.02773.pdf"
+}
