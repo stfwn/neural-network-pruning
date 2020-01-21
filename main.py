@@ -5,6 +5,7 @@ import sys
 from datetime import datetime as dt
 
 import torch
+import torch.nn as nn
 
 from training.Trainer import Trainer
 from testing.Tester import Tester
