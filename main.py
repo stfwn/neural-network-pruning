@@ -68,7 +68,8 @@ def main(args):
         sys.exit(0)
     
     # TODO : add run name
-    writer = SummaryWriter(log_dir='./results')
+    now = dt.now().strftime("%Y%m%d-%H%M%S")
+    writer = SummaryWriter(log_dir=f"./results/{model_name}_{dataset}_epochs={args.epochs}_batch_size={args.batch_size}_initialization={args.initialization}_seed={args.seed}_/{now}")
     writer.add_text('hparams', json.dumps(vars(args)))
 
     # Train/test loop
