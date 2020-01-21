@@ -128,7 +128,7 @@ def parse_args():
     parser.add_argument('--disable-cuda', required=False, action='store_true')
     parser.add_argument('--pruning-rate', type=float, required=False, default=0)
     parser.add_argument('--pruning-interval', type=int, required=False, default=0)
-    parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument('-s', '--seed', type=int, default=42)
     args = parser.parse_args()
 
     if args.pruning_rate > 1:
