@@ -9,9 +9,12 @@
 | Runs               | 5 x each                   |
 | Init schemes       | Xavier, Kaiming            |
 
-TODO: Question: Xavier & Kaiming normal/uniform dis different runs?
-TODO: QUESTION: Varying pruning rate or nah?
-TODO: Find learning rate & pruning rate for both model/shizzle combinations in paper
+TODO's:
+
+- [ ] Question: Xavier & Kaiming normal/uniform dis different runs?
+- [ ] Question: test with varying pruning settings or not needed?
+- [ ] Check pruning rates and intervals for both model/dataset combinations in
+  paper.
 
 ```bash
 # Invoke the program
