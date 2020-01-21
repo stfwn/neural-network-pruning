@@ -35,26 +35,30 @@
     - [x] Incorporate pruning mechanism.
     - [x] Implement resetting function.
 
+
 ## Week 3: Perform Experiments
 ### 2020-01-21
-- [ ] Step 4.
-    - [ ] Experiment with different initialization schemas
-        - [ ] Pick different schema's to try, figure out what they are
-                and decide who does which one.
-        - [ ] Every schema is to be experimented with a total of 8 times. 
-                Do this with certain rates for pruning rate and pruning interval.
-                Make sure to document which models are result of which initialisation and what variables.
-        - [ ] Answer the question: does the initialization schema of a
-                network affect its robustness to pruning? (Compare the results of the different initialions and
-                draw a conclusion)
+- [ ] Finalize code.
+    - [ ] Stefan: Check bias is unaffected by alternative inits.
+    - [ ] Thomas: Finalize logging. Everything neat.
+- [ ] Ellis: write for paper: methods
+- [ ] All: divide the experiment runs. Structure this in `experiments.md`
 
-### 2020-01-23
-- [ ] Step 5.
-    - [ ] Determine for both of the above networks, and at varying degrees of
-          sparsity levels, which schema works best and why.
+### 2020-01-22 -> 2020-01-24
+- [ ] All: Start running experiments as divided on 2020-01-21.
+- [ ] All: During meetings, keep each other updated and discuss progress.
+
+### 2020-01-24 (end of day meeting)
+- [ ] All: Discuss planning for interpretation of results.
+- [ ] All: Discuss planning for writing paper.
+- [ ] All: Discuss planning for preparing presentation.
+- [ ] ALl: Fill in planning for this week in detailed manner.
+
+
+__End of latest update.__
 
 ## Week 4: Do Optional Things and Write Report
-### 2020-01-28
+### 2020-01-27
 - [ ] Step 6 & 7.
     - [ ] Based on the above results, is it possible, then, to construct a
           custom initialization schema that improves the robustness further?
