@@ -18,9 +18,9 @@ TODO: Find learning rate & pruning rate for both model/shizzle combinations in p
 python main.py
 
 # Set seed
--s 69
 -s 42
--s 420
+-s 43
+-s 44
 
 # LeNet/MNIST runs should always have these options:
 -m lenet -d mnist -l 1.2e-3 -b 60 -e 50
