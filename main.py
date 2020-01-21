@@ -44,7 +44,7 @@ def main(args):
     else:
         raise ValueError(f'Model "{args.model}" not supported.')
 
-    # Apply alternative init method if instructed to do so 
+    # Apply alternative init method if instructed to do so
     if args.initialization:
         init_weights(model, args.initialization)
 
@@ -66,7 +66,7 @@ def main(args):
         tester = Tester(model, dataset, device=device)
         tester.test_epoch()
         sys.exit(0)
-    
+
     # TODO : add run name
     now = dt.now().strftime("%Y%m%d-%H%M%S")
     writer = SummaryWriter(log_dir=f"./results/{model_name}_{dataset}_epochs={args.epochs}_batch_size={args.batch_size}_initialization={args.initialization}_seed={args.seed}_/{now}")
@@ -108,6 +108,12 @@ def log(writer, model, tester, trainer, i):
     writer.add_scalar('loss/train', trainer.losses[-1], i)
     writer.add_scalar('loss/test', tester.losses[-1], i)
     writer.add_scalar('sparsity/sparsity', get_sparsity(model), i)
+
+    for layer in model.layers:
+        if type(layer) is nn.Linear or type(layer) is nn.Conv2d:
+            writer.add_histogram('weight', layer.weight, i)
+            writer.add_histogram('bias', layer.bias, i)
+            writer.add_histogram('weight.gradient', layer.weight.grad, i)
 
 
 def parse_args():
