@@ -8,7 +8,10 @@ def main():
     for filename in os.listdir('.'):
         if '.log' in filename:
             with open(filename) as fp:
-                runs.append(json.loads(fp.read()))
+                run = json.loads(fp.read())
+                if run in runs:
+                    print(f'Duplicate run log! {filename} not counted.')
+                runs.append(run)
 
     counts = defaultdict(lambda: defaultdict(int))
     for run in runs:
