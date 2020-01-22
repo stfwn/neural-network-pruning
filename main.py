@@ -100,7 +100,7 @@ def main(args):
 
     # Save model
     if not args.forget_model:
-        now = dt.now().strftime('%Y-%m-%d-%H-%M')
+        now = dt.now().strftime('%Y-%m-%d-%H-%M-%S')
         os.makedirs('./models/states/', exist_ok=True)
         torch.save(model.state_dict(), f'./models/states/{model_name}-{now}.pt')
 
@@ -144,7 +144,7 @@ def simple_log(args, tester, trainer, sparsities):
             'sparsity': sparsities}
 
     os.makedirs('./logs/', exist_ok=True)
-    now = dt.now().strftime('%Y-%m-%d-%H-%M')
+    now = dt.now().strftime('%Y-%m-%d-%H-%M-%S')
     filename = now + '.log'
 
     with open(f'./logs/{filename}', 'w') as fp:
