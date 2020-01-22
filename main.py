@@ -69,7 +69,7 @@ def main(args):
         sys.exit(0)
 
     # Create log file and add params to directory and as text to tensorboard
-    now = dt.now().strftime("%Y%m%d-%H%M%S")
+    now = dt.now().strftime('%Y-%m-%d-%H-%M')
     writer = SummaryWriter(log_dir=f"./results/{model_name}_{dataset.lower()}_i{args.initialization}_pr{args.pruning_rate}_pi{args.pruning_interval}_e{args.epochs}_b{args.batch_size}_s{args.seed}/{now}")
     writer.add_text('hparams', json.dumps(vars(args)))
 
