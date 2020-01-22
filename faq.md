@@ -15,3 +15,15 @@ For the FC model for MNIST, we use the LeNet 300-100 architecture from LeCun
 in their paper about Lottery Tickets. This allows us to compare results and
 draw a conclusion about whether or not looking into different initialization
 strategies is worth it.
+
+## In Morcos et al. late resetting is used, why do you not do this?
+
+Late resetting means that when resetting weights after pruning you do not reset
+them to their _initial_ value but to their value after _k_ epochs of training.
+We decided not to use late resetting in our research so that the effects of
+different initialization strategies -- if any -- would be more pronounced, not
+diluted by one optimization step.
+
+Note: perhaps mention paper "Stabilizing the lottery ticket hypothesis" where
+this came from (source: Andrei) in relation with big data sets, which we do not
+have here.
