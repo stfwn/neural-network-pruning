@@ -2,17 +2,10 @@
 import os
 import json
 from collections import defaultdict
+import helpers
 
 def main():
-    runs = []
-    for filename in os.listdir('.'):
-        if '.log' in filename:
-            with open(filename) as fp:
-                run = json.loads(fp.read())
-                if run in runs:
-                    print(f'Duplicate run log! {filename} not counted.')
-                runs.append(run)
-
+    runs = helpers.get_runs()
     counts = defaultdict(lambda: defaultdict(int))
     for run in runs:
         for arg in run['args'].keys():
