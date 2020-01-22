@@ -108,7 +108,6 @@ def main(args):
     simple_log(args, trainer, tester, sparsities)
 
 
-
 def log(writer, model, tester, trainer, i):
     writer.add_scalar('acc/train', trainer.accuracies[-1], i)
     writer.add_scalar('acc/test', tester.accuracies[-1], i)
@@ -145,11 +144,8 @@ def simple_log(args, tester, trainer, sparsities):
             'sparsity': sparsities}
 
     os.makedirs('./logs/', exist_ok=True)
-    prev_logs = sorted(os.listdir('./logs/'))
-    if len(prev_logs) == 0:
-        filename = '0.log'
-    else:
-        filename = str(int(prev_logs[-1].replace('.log', '')) + 1) + '.log'
+    now = dt.now().strftime('%Y-%m-%d-%H-%M')
+    filename = now + '.log'
 
     with open(f'./logs/{filename}', 'w') as fp:
         fp.write(json.dumps(log, indent=4))
