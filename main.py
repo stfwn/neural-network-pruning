@@ -68,9 +68,9 @@ def main(args):
         tester.test_epoch()
         sys.exit(0)
 
-    # TODO : add run name
+    # Create log file and add params to directory and as text to tensorboard
     now = dt.now().strftime("%Y%m%d-%H%M%S")
-    writer = SummaryWriter(log_dir=f"./results/{model_name}_{dataset.lower()}_epochs{args.epochs}_batch_size{args.batch_size}_initialization{args.initialization}_seed{args.seed}/{now}")
+    writer = SummaryWriter(log_dir=f"./results/{model_name}_{dataset.lower()}_i{args.initialization}_pr{args.pruning_rate}_pi{args.pruning_interval}_e{args.epochs}_b{args.batch_size}_s{args.seed}/{now}")
     writer.add_text('hparams', json.dumps(vars(args)))
 
     # Train/test loop
@@ -109,9 +109,23 @@ def log(writer, model, tester, trainer, i):
     writer.add_scalar('loss/train', trainer.losses[-1], i)
     writer.add_scalar('loss/test', tester.losses[-1], i)
     writer.add_scalar('sparsity/sparsity', get_sparsity(model), i)
-    all_weights = torch.cat([layer.weight.flatten() for layer in model.layers if type(layer) is nn.Linear or type(layer) is nn.Conv2d], axis=0)
-    all_biases = torch.cat([layer.bias.flatten() for layer in model.layers if type(layer) is nn.Linear or type(layer) is nn.Conv2d], axis=0)
-    all_gradients = torch.cat([layer.weight.grad.flatten() for layer in model.layers if type(layer) is nn.Linear or type(layer) is nn.Conv2d], axis=0)
+    if args.model.lower() == 'lenet':
+        all_weights = torch.cat([layer.weight.flatten() for layer in model.layers if type(layer) is nn.Linear or type(layer) is nn.Conv2d], axis=0)
+        all_biases = torch.cat([layer.bias.flatten() for layer in model.layers if type(layer) is nn.Linear or type(layer) is nn.Conv2d], axis=0)
+        all_gradients = torch.cat([layer.weight.grad.flatten() for layer in model.layers if type(layer) is nn.Linear or type(layer) is nn.Conv2d], axis=0)
+    else:
+        conv_weights = torch.cat([layer.weight.flatten() for layer in model.conv if type(layer) is nn.Conv2d], axis=0)
+        lin_weights = torch.cat([layer.weight.flatten() for layer in model.fc if type(layer) is nn.Linear], axis=0)
+        all_weights = torch.cat([conv_weights, lin_weights], axis=0)
+
+        conv_biases = torch.cat([layer.bias.flatten() for layer in model.conv if type(layer) is nn.Conv2d], axis=0)
+        lin_biases = torch.cat([layer.bias.flatten() for layer in model.fc if type(layer) is nn.Linear], axis=0)
+        all_biases = torch.cat([conv_biases, lin_biases], axis=0)
+
+        conv_gradients = torch.cat([layer.weight.grad.flatten() for layer in model.conv if type(layer) is nn.Conv2d], axis=0)
+        lin_gradients = torch.cat([layer.weight.grad.flatten() for layer in model.fc if type(layer) is nn.Linear], axis=0)
+        all_gradients = torch.cat([conv_gradients, lin_gradients], axis=0)
+
     writer.add_histogram('weight', all_weights, i)
     writer.add_histogram('bias', all_biases, i)
     writer.add_histogram('weight.gradient', all_gradients, i)
