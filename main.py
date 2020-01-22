@@ -79,6 +79,7 @@ def main(args):
             pruning_interval=args.pruning_interval,
             learning_rate=args.learning_rate)
     tester = Tester(model, dataset, device=device)
+    sparsities = []
     for i in range(args.epochs):
         print(f'======= Epoch {i} ======= =======')
         # Train
@@ -88,10 +89,11 @@ def main(args):
         # Test
         model.eval()
         tester.test_epoch()
+        sparsities.append(get_sparsity(model))
         print(f'\taccuracy\tloss\n' +
                 f'train\t{trainer.accuracies[-1]:.5f}\t{trainer.losses[-1]:.5f}\n' +
                 f'test\t{tester.accuracies[-1]:.5f}\t{tester.losses[-1]:.5f}\n' +
-                f'sparsity:{get_sparsity(trainer.model):.5f}')
+                f'sparsity:{sparsities[-1]:.5f}')
 
         # Write Tensorboard log
         log(writer, model, tester, trainer, i)
@@ -101,6 +103,10 @@ def main(args):
         now = dt.now().strftime('%Y-%m-%d-%H-%M')
         os.makedirs('./models/states/', exist_ok=True)
         torch.save(model.state_dict(), f'./models/states/{model_name}-{now}.pt')
+
+    # Save simple version of logs
+    simple_log(args, trainer, tester, sparsities)
+
 
 
 def log(writer, model, tester, trainer, i):
@@ -130,6 +136,23 @@ def log(writer, model, tester, trainer, i):
     writer.add_histogram('bias', all_biases, i)
     writer.add_histogram('weight.gradient', all_gradients, i)
 
+def simple_log(args, tester, trainer, sparsities):
+    log = {'args': vars(args),
+            'test_acc': tester.accuracies,
+            'test_loss': tester.losses,
+            'train_acc': trainer.accuracies,
+            'train_loss': trainer.losses,
+            'sparsity': sparsities}
+
+    os.makedirs('./logs/', exist_ok=True)
+    prev_logs = sorted(os.listdir('./logs/'))
+    if len(prev_logs) == 0:
+        filename = '0.log'
+    else:
+        filename = str(int(prev_logs[-1].replace('.log', '')) + 1) + '.log'
+
+    with open(f'./logs/{filename}', 'w') as fp:
+        fp.write(json.dumps(log, indent=4))
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Entrypoint for training/testing models in this repository.')
