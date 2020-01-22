@@ -1,6 +1,6 @@
 # Experiments
 
-2 models x 2 init schemes x 3 seeds x 5 runs = 60 runs.
+2 models x 4 init schemes x 3 seeds = 24 runs
 
 | Param              | Different values           |
 |--------------------|----------------------------|
