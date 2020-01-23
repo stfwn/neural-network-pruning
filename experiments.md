@@ -24,6 +24,7 @@ python main.py
 -s 42
 -s 43
 -s 44
+-s 45
 
 # LeNet/MNIST runs should always have these options:
 -m lenet -d mnist -l 1.2e-3 -b 60 -e 100
@@ -46,3 +47,4 @@ python main.py
 | Ellis  | 42   |
 | Stefan | 43   |
 | Thomas | 44   |
+| Stefan | 45   |
