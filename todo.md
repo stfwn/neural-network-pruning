@@ -56,7 +56,7 @@
 - [x] Meet at 12.
 - [ ] All: do data exploration.
 - [x] Stefan: provide Makefile to export report with pandoc.
-- [ ] Stefan: convert report textfile to pandoc markdown as an example.
+- [x] Stefan: convert report textfile to pandoc markdown.
 - [ ] Stefan: figure out error bars plot for spread with different seeds.
 - [ ] Ellis: get git running locally.
 - [ ] Thomas: plot sparsity vs. accuracy.
