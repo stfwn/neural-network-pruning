@@ -35,7 +35,6 @@
     - [x] Incorporate pruning mechanism.
     - [x] Implement resetting function.
 
-
 ## Week 3: Perform Experiments
 ### 2020-01-21
 - [x] Finalize code.
@@ -45,23 +44,28 @@
 
 ### 2020-01-22
 - [x] Meeting at 10:00
-- [ ] Do runs, figure things out.
-- [ ] Meeting at 12:00
-- [ ] Meeting at ?
+- [x] Do runs, figure things out.
+- [x] Meeting at 12:00
+- [x] Meeting at 16:30
 
-### 2020-01-22 -> 2020-01-24
-- [ ] Ellis: write for paper: methods
+### 2020-01-23
+- [ ] Meet at 10.
+- [ ] Thomas & Ellis: run final 2 experiments.
+- [ ] Ellis: share paper text so far.
+- [ ] All: dig in data to see what we can see.
+- [ ] Meet at 12.
+- [ ] Meet at ?
+
+### 2020-01-24
 - [ ] All: Start running experiments as divided on 2020-01-21.
 - [ ] All: During meetings, keep each other updated and discuss progress.
-
-### 2020-01-24 (end of day meeting)
 - [ ] All: Discuss planning for interpretation of results.
 - [ ] All: Discuss planning for writing paper.
 - [ ] All: Discuss planning for preparing presentation.
 - [ ] ALl: Fill in planning for this week in detailed manner.
 
 
-__End of latest update.__
+__End of latest round of updates.__
 
 ## Week 4: Do Optional Things and Write Report
 ### 2020-01-27
