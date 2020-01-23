@@ -20,5 +20,13 @@ def get_runs():
         run['test_acc'] = np.array(run['test_acc'])
     return runs
 
+def filter_runs(runs, model=None, init=None):
+    filtered = runs
+    if model:
+        filtered = [run for run in runs if run['args']['model'] == model]
+    if init:
+        filtered = [run for run in filtered if run['args']['initialization'] == init]
+    return filtered
+
 if __name__ == "__main__":
     main()
