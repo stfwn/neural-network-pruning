@@ -55,6 +55,8 @@
 - [ ] Ellis: share paper text so far.
 - [ ] All: dig in data to see what we can see.
 - [ ] Meet at 12.
+- [ ] Stefan: provide Makefile to export report with pandoc.
+- [ ] Stefan: convert report textfile to pandoc markdown as an example.
 - [ ] Meet at ?
 
 ### 2020-01-24
