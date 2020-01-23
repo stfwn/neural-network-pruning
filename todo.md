@@ -50,14 +50,17 @@
 
 ### 2020-01-23
 - [x] Meet at 10.
-- [ ] Thomas & Ellis: run final 2 experiments.
+- [x] Thomas & Ellis: run final 2 experiments.
 - [x] Stefan: redo some lenet runs with seed 42.
-- [ ] Ellis: share paper text so far.
-- [ ] All: dig in data to see what we can see.
-- [ ] Meet at 12.
+- [x] Ellis: share paper text so far.
+- [x] Meet at 12.
+- [ ] All: do data exploration.
 - [ ] Stefan: provide Makefile to export report with pandoc.
 - [ ] Stefan: convert report textfile to pandoc markdown as an example.
-- [ ] Meet at ?
+- [ ] Stefan: figure out error bars plot for spread with different seeds.
+- [ ] Ellis: get git running locally.
+- [ ] Thomas: plot sparsity vs. accuracy.
+- [ ] Meet at 16:30.
 
 ### 2020-01-24
 - [ ] All: Start running experiments as divided on 2020-01-21.
