@@ -3,12 +3,13 @@ title: Making Networks Prune-Ready
 author: Stefan Wijnja, Ellis Wierstra, Thomas Hamburger
 date: \today{}
 abstract: TODO
+toc: true
 ---
 
 
 ## Problem Statement
 
-Having neural networks trained to carry out tasks like object detection or shape recognition can be very useful in everyday life, like for face recognition or self-driving cars. But getting a high performance on these tasks typically comes with a pretty high ‘price’. High performance often requires a high number of parameters within the neural network, and a high number of parameters demands great computational and memory resources. 
+Having neural networks trained to carry out tasks like object detection or shape recognition can be very useful in everyday life, like for face recognition or self-driving cars. But getting a high performance on these tasks typically comes with a pretty high price. High performance often requires a high number of parameters within the neural network, and a high number of parameters demands great computational and memory resources. 
 
 For big companies getting these resources is not that much of a problem, but for researchers and developers these are generally not readily available. For this last group, it is important to find effective ways to reduce the amount of computation needed for their neural network whilst still maintaining a high performance. A very promising method to do so is called pruning.
 
