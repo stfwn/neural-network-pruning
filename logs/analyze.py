@@ -2,46 +2,30 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-import helpers
+from helpers import *
 
 def main():
-    all_runs = helpers.get_runs()
+    all_runs = get_runs()
+    lenet_kn = filter_runs(all_runs, model='lenet', init='kaiming-normal')
+    lenet_ku = filter_runs(all_runs, model='lenet', init='kaiming-uniform')
+    lenet_xn = filter_runs(all_runs, model='lenet', init='xavier-normal')
+    lenet_xu = filter_runs(all_runs, model='lenet', init='xavier-uniform')
+    
 
-    lenet_kaiming_runs = []
-    lenet_xavier_runs = []
-    for run in all_runs:
-        if run['args']['model'] == 'lenet' and 'kaiming' in run['args']['initialization']:
-            lenet_kaiming_runs.append(run)
-        else:
-            lenet_xavier_runs.append(run)
-
-    a = lenet_xavier_runs[0]
-    b = lenet_xavier_runs[1]
-    c = lenet_kaiming_runs[0]
-    d = lenet_kaiming_runs[1]
     var = 'test_acc'
-
-    fig, axs = plt.subplots(2, 2, constrained_layout=True)
-    axs[0][0].plot(a[var], label=a['args']['initialization'])
-    axs[0][0].plot(b[var], label=b['args']['initialization'])
-    axs[0][0].plot(c[var], label=c['args']['initialization'])
-    axs[0][0].plot(d[var], label=d['args']['initialization'])
-    axs[0][0].set_xlabel('epoch')
-    axs[0][0].set_ylabel(var)
-    axs[0][0].legend()
-    plot_run_diff(axs[0][1], a, b, var)
-    plot_run_diff(axs[1][0], a, c, var)
-    plot_run_diff(axs[1][1], a, d, var)
+    a = np.mean(np.array([run[var] for run in lenet_kn]), axis=0)
+    b = np.mean(np.array([run[var] for run in lenet_ku]), axis=0)
+    c = np.mean(np.array([run[var] for run in lenet_xn]), axis=0)
+    d = np.mean(np.array([run[var] for run in lenet_xu]), axis=0)
+    fig, axs = plt.subplots(1, 1, constrained_layout=True)
+    axs.plot(a, label='lenet_kn')
+    axs.plot(b, label='lenet_ku')
+    axs.plot(c, label='lenet_xn')
+    axs.plot(d, label='lenet_xu')
+    axs.set_xlabel('epochs')
+    axs.set_ylabel('test_acc')
+    axs.legend()
     plt.show()
-
-def plot_run_diff(ax, a, b, var):
-    diff = abs(a[var] - b[var])
-    ax.set_xlabel('epoch')
-    ax.set_ylabel(var)
-    ax.plot(diff, label=f"difference between {a['args']['initialization']} and {b['args']['initialization']}")
-    ax.legend()
-
-
 
 
 if __name__ == "__main__":
