@@ -49,8 +49,9 @@
 - [x] Meeting at 16:30
 
 ### 2020-01-23
-- [ ] Meet at 10.
+- [x] Meet at 10.
 - [ ] Thomas & Ellis: run final 2 experiments.
+- [x] Stefan: redo some lenet runs with seed 42.
 - [ ] Ellis: share paper text so far.
 - [ ] All: dig in data to see what we can see.
 - [ ] Meet at 12.
