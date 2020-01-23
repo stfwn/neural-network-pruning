@@ -11,7 +11,7 @@ def main():
         for arg in run['args'].keys():
             if arg in ['load_last_pretrained', 'disable_cuda', 'forget_model']:
                 continue
-            val = run['args'][arg]
+            val = run['args'][arg.lower()]
             counts[arg][val] += 1
 
     for key in counts.keys():
