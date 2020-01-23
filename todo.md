@@ -55,7 +55,7 @@
 - [x] Ellis: share paper text so far.
 - [x] Meet at 12.
 - [ ] All: do data exploration.
-- [ ] Stefan: provide Makefile to export report with pandoc.
+- [x] Stefan: provide Makefile to export report with pandoc.
 - [ ] Stefan: convert report textfile to pandoc markdown as an example.
 - [ ] Stefan: figure out error bars plot for spread with different seeds.
 - [ ] Ellis: get git running locally.
