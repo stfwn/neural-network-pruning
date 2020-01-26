@@ -54,39 +54,22 @@
 - [x] Stefan: redo some lenet runs with seed 42.
 - [x] Ellis: share paper text so far.
 - [x] Meet at 12.
-- [ ] All: do data exploration.
+- [x] All: do data exploration.
 - [x] Stefan: provide Makefile to export report with pandoc.
 - [x] Stefan: convert report textfile to pandoc markdown.
-- [ ] Stefan: figure out error bars plot for spread with different seeds.
+- [x] Stefan: figure out error bars plot for spread with different seeds.
 - [ ] Ellis: get git running locally.
 - [ ] Thomas: plot sparsity vs. accuracy.
-- [ ] Meet at 16:30.
+- [x] Meet at 16:30.
 
 ### 2020-01-24
-- [ ] All: Start running experiments as divided on 2020-01-21.
-- [ ] All: During meetings, keep each other updated and discuss progress.
+- [x] Meet with TA.
+- [x] Meet with BrainCreators.
+- [x] Discuss results so far.
+- [x] Discuss planning for next week.
+
+### 2020-01-27
 - [ ] All: Discuss planning for interpretation of results.
 - [ ] All: Discuss planning for writing paper.
 - [ ] All: Discuss planning for preparing presentation.
 - [ ] ALl: Fill in planning for this week in detailed manner.
-
-
-__End of latest round of updates.__
-
-## Week 4: Do Optional Things and Write Report
-### 2020-01-27
-- [ ] Step 6 & 7.
-    - [ ] Based on the above results, is it possible, then, to construct a
-          custom initialization schema that improves the robustness further?
-        - [ ] Compare the different initialisations. Is there a major difference, and if so, what component
-                is responsible? Is it usable for a custom initialisation schema?
-        - [ ] If it is possible to construct a custom schema, let's experiment with it. Does it improve robustness?
-    - [ ] Check whether the schema built on (6) generalizes to other pruning methods.
-
-### 2020-01-28
-- [ ] Presentations
-    - [ ] Powerpoint (?)
-    - [ ] Text
-
-### 2020-01-31
-- [ ] Final Report
