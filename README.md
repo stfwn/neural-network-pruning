@@ -1,9 +1,6 @@
 # Kunstmatige Intelligentie: Leren en Beslissen
 
 ## Usage
-Run `python main.py --help` for help.See the bottom of `initializing.py` for a dictionary of which init schemes are
-supported at this time.
-
 ```
 usage: main.py [-h] [--load-last-pretrained] -m MODEL -d DATASET [-e EPOCHS]
                [-b BATCH_SIZE] [-i INITIALIZATION] [-l LEARNING_RATE]
@@ -29,7 +26,10 @@ optional arguments:
   -s SEED, --seed SEED
 ```
 
-Here is a list of options for parameters that are not self-explanatory:
+Run `python main.py --help` to display these instructions locally. Here is a
+list of options for parameters that are not self-explanatory. For each of the
+initialization schemes there are logs of 11 differently seeded runs with the
+LeNet model already present in the `logs` folder.
 
 | Parameter          | Options                                                                                                                                                                                       |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
