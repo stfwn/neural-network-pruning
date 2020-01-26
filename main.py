@@ -19,12 +19,6 @@ from torch.utils.tensorboard import SummaryWriter
 import json
 import numpy as np
 
-def set_seed(seed):
-    torch.manual_seed(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    np.random.seed(seed)
-
 def main(args):
     # Check for cuda
     if torch.cuda.is_available() and not args.disable_cuda:
@@ -144,11 +138,16 @@ def simple_log(args, tester, trainer, sparsities):
             'sparsity': sparsities}
 
     os.makedirs('./logs/', exist_ok=True)
-    now = dt.now().strftime('%Y-%m-%d-%H-%M-%S')
+    now = dt.now().strftime('%Y-%m-%d-%H-%M-%S-%f')
+    logfiles = os.listdir('./logs/')
     filename = now + '.log'
-
+    while filename in logfiles:
+        now = dt.now().strftime('%Y-%m-%d-%H-%M-%S-%f')
+        logfiles = os.listdir('./logs/')
+        filename = now + '.log'
     with open(f'./logs/{filename}', 'w') as fp:
         fp.write(json.dumps(log, indent=4))
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Entrypoint for training/testing models in this repository.')
@@ -184,6 +183,13 @@ def parse_args():
         raise ValueError('Model Conv6 is not configured for dataset MNIST.')
 
     return args
+
+
+def set_seed(seed):
+    torch.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    np.random.seed(seed)
 
 
 if __name__ == "__main__":
