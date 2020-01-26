@@ -32,12 +32,12 @@
 
 ## Week 3
 
-| Day of the Week | Date       | Item                                                                                                                                                                   | Members | Time Spent |
-|-----------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|------------|
-| Monday          | 2020-01-20 | Figure out and implement some weight init methods, fiddle with hparams and train Conv 6 on CIFAR10 to see what it can do.                                              | Stefan  | 6.5h       |
-| Tuesday         | 2020-01-21 | Prepare meetings, have meetings. Prepare more meetings, having more meetings. Prepare meetings to prepare for meetings about meetings.                                 | All     | 6h         |
-| Wednesday       | 2020-01-22 | Write simple logging tool as backup for TensorBoard, debug various small problems, do experiments, write functions to analyze results.                                 | Stefan  | 8h         |
-| Thursday        | 2020-01-23 | Do more LeNet runs, data exploration, write scripts to verify and check logs, make plots, meet with group.                                                             | Stefan  | 7h         |
-| Friday          | 2020-01-24 | Meetings with TA and BrainCreators.                                                                                                                                    | All     | 3h         |
-|                 | 2020-01-24 | Off day. Casually look into some stuff. Be unproductive.                                                                                                               | Stefan  | 1h         |
-| Sunday          | 2020-01-26 | Add another 6 initialization schemes and 11 LeNet runs for each of these. Write code to analyze those results. Structure repo folder in preparation for handing it in. | Stefan  | 6h         |
+| Day of the Week | Date       | Item                                                                                                                                                                                                 | Members | Time Spent |
+|-----------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|------------|
+| Monday          | 2020-01-20 | Figure out and implement some weight init methods, fiddle with hparams and train Conv 6 on CIFAR10 to see what it can do.                                                                            | Stefan  | 6.5h       |
+| Tuesday         | 2020-01-21 | Prepare meetings, have meetings. Prepare more meetings, having more meetings. Prepare meetings to prepare for meetings about meetings.                                                               | All     | 6h         |
+| Wednesday       | 2020-01-22 | Write simple logging tool as backup for TensorBoard, debug various small problems, do experiments, write functions to analyze results.                                                               | Stefan  | 8h         |
+| Thursday        | 2020-01-23 | Do more LeNet runs, data exploration, write scripts to verify and check logs, make plots, meet with group.                                                                                           | Stefan  | 7h         |
+| Friday          | 2020-01-24 | Meetings with TA and BrainCreators.                                                                                                                                                                  | All     | 3h         |
+|                 | 2020-01-24 | Off day. Casually look into some stuff. Be unproductive.                                                                                                                                             | Stefan  | 1h         |
+| Sunday          | 2020-01-26 | Add another 6 initialization schemes and 11 LeNet runs for each of these. Write code to analyze those results. Structure repo folder in preparation for handing it in. Begin on making presentation. | Stefan  | 7h         |
