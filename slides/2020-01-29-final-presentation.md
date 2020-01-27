@@ -150,6 +150,7 @@ Initialization Methods' Probability Density Functions
 
 Get interns to try:
 
+* Distributions that are even narrower around $0$.
 * More datasets.
 * More models.
 * More pruning rates and pruning intervals.
