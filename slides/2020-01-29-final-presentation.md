@@ -6,22 +6,54 @@ date: \today{}
 
 # Neural networks are very cool
 
-* Images of cool applications.
+* TODO: Images of cool applications.
 
 # But they can be very demanding 
-* Numbers for huge networks and how long it takes to train them.
 
-# One possible solution: pruning
+* TODO: Numbers for huge networks and how long it takes to train them.
 
-* Explain pruning, iterative pruning, discuss known results so far.
+---
 
-# Pruning can lead to Winning Tickets
+__The Lottery Ticket Hypothesis__
 
-* Explain what winning tickets are.
+A randomly initialized, dense neural-network contains a subnetwork that is
+initalized such that -- when trained in isolation -- it can match the test
+accuracy of the original network after training for at most the same number of
+iterations.
 
-# Question
+[@frankle2019]
 
-## Does weight initialization matter looking for Winning Tickets?
+---
+
+__The Lottery Ticket Hypothesis__ (redux)
+
+A big net contains a small net that can match the big net.
+
+---
+
+# Finding winning tickets by pruning
+
+* Pruning
+* Magnitude-based pruning
+* Iterative magnitude-based pruning
+
+---
+
+# Status quo on pruning
+
+TODO
+
+* [@frankle2019]
+* [@morcos2019]
+
+---
+
+# Our question
+
+\center
+How do initialization algorithms compare when looking for winning tickets?
+
+---
 
 # Method
 ## Plan
