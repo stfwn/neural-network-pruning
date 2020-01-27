@@ -41,3 +41,9 @@
 | Friday          | 2020-01-24 | Meetings with TA and BrainCreators.                                                                                                                                                                  | All     | 3h         |
 |                 | 2020-01-24 | Off day. Casually look into some stuff. Be unproductive.                                                                                                                                             | Stefan  | 1h         |
 | Sunday          | 2020-01-26 | Add another 6 initialization schemes and 11 LeNet runs for each of these. Write code to analyze those results. Structure repo folder in preparation for handing it in. Begin on making presentation. | Stefan  | 7h         |
+
+## Week 4
+
+| Day of the Week | Date       | Item                                                                            | Members | Time Spent |
+|-----------------|------------|---------------------------------------------------------------------------------|---------|------------|
+| Monday          | 2020-01-27 | Work on results, write code for plots and export them, make final presentation. | Stefan  | 8h         |
