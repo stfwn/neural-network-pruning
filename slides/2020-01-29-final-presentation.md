@@ -1,5 +1,5 @@
 ---
-title: One Initialization to Rule Them All
+title: One Initialization to Rule Them All?
 author: Stefan Wijnja, Ellis Wierstra, Thomas Hamburger
 date: \today{}
 ---
@@ -8,8 +8,7 @@ date: \today{}
 
 * Images of cool applications.
 
-# But they can be very demanding
-
+# But they can be very demanding 
 * Numbers for huge networks and how long it takes to train them.
 
 # One possible solution: pruning
@@ -25,27 +24,103 @@ date: \today{}
 ## Does weight initialization matter looking for Winning Tickets?
 
 # Method
+## Plan
 
-## Model
+1. Pick dataset.
+2. Pick model.
+3. Pick initialization methods.
+4. __Write the code.__
+5. __Do lots of experiments.__
+6. Answer the question.
 
-* Fully Connected.
+---
+
+# Method
+## Dataset: MNIST
+\center
+![](images/mnist.png){ height=150px }
+
+* Handwritten digits
+* $28 \times 28$ pixels
+* Training set: 60k
+* Test set: 10k
+
+---
+
+# Method
+## Model: LeNet [@lecun1998]
+\center
+![](images/net.jpg){ height=150px }
+
+* Fully connected
 * Two hidden layers: 300 & 100 neurons $\rightarrow$ 266k weights.
+* Leaky ReLU (negative slope: $0.05$)
 
+---
+
+# Method
+## Initialization Methods
+
+|                              |  | Xavier                                              | Kaiming                                    |
+|------------------------------|--|-----------------------------------------------------|--------------------------------------------|
+| $\mathcal{U}(-a, a)$         |  | $\sqrt{\frac{6}{\text{fan\_in} + \text{fan\_out}}}$ | $\sqrt{\frac{3}{\text{fan\_mode}}}$        |
+| $\mathcal{N}(0, \text{var})$ |  | $\sqrt{\frac{2}{\text{fan\_in} + \text{fan\_out}}}$ | $\frac{\text{1}}{\sqrt{\text{fan\_mode}}}$ |
+
+* `fan_in`/`fan_out`: number of inputs to/outputs from a neuron.
+  `fan_mode`: `fan_in` or `fan_out`.
+
+---
+
+# Method
+
+\center
+Initialization Methods' Probability Density Functions
+
+\center
+![](images/pdfs.png){ width=95% }
+
+---
+
+# Method
 ## Training
 
+1. Initialize network and save weights.
+2. Train for 5 epochs.
+3. Trim smallest 20% of the weights.
+4. Reset the weights to the saved ones.
+5. `GO TO 2`
 
-## Pruning
+\center
+![](images/pruning-progression.png){ height=150px }
 
-* Used LeNet on MNIST and tried a bunch of different inits. Nice summary on
-  framework(s) used, how many lines of code written, how many epochs trained,
-  etc.>
+---
+
+# Method
+## Testing
+
+* Save loss and accuracy on the training and testing set after every epoch.
+
+\center
+![](images/thinking-robot.png){ height=100px }
+
+---
+
 
 # Results
 
-* Nice graphs of pruning rate vs. test_acc.
+![](images/results-0-original-4.png)
+
+---
+
+![](images/results-1-xaviers.png)
 
 # Further Research
 
-* What does this research lead to?
+Get interns to try:
+
+* More datasets.
+* More models.
+* More pruning rates and pruning intervals.
+* More pruning methods.
 
 # Questions?
