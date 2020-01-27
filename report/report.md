@@ -30,35 +30,60 @@ The second dataset used in this project is Canadian Institute For Advanced Resea
 
 ## Theoretic Definitions
 
-Neural Networks
+### Neural Networks
+A neural network is a technological system that functions similarly to the neurons of the human brain. Neural networks are used in Artificial Intelligence for for example deep learning and machine learning. The systems are designed to function like the human brain, replicating the way humans learn. The basic of the system contains an input layer, an output layer, and hidden layers in between that change the input layer so that the output layer produces useful values. All layers consist of a certain amount of nodes, which all have their share in information. The network is trained to find patterns in data, and to recognize said patterns in new data. An example for use of neural networks is the recognition of numbers or pictures, like the for the datasets used in this project.
+The way a neural network learns the patterns in data, is by 'weights' used to calculate the value for a new node in the next layer. So when data is given to the input layer, the input is manipulated by the corresponding weights, which will give the input for the next layer. This process is repeated untill the the output layer is reached. Training a neural network takes a training dataset, which the network can use to learn the correct weights in between all the layers. When trained, the network can be used on other data of the same format for for example classification of images.
+
+The types of neural networks used in this project are the feedforward neural network and the convolutional neural network. The feedforward neural network is a network where the information that travels through the network only travels in one direction: from the input layer to the output layer via potential hidden layers.
+
+*insert figure of ff nn*
+
+A convolutional neural network is a little more complicated. Whereas in a feedforward neural network all nodes are connected to all the nodes in the previous layer, for a convolutional network the nodes are only connected to other nodes located close to itself. A convolutional network is used when it is useful to preserve the spatiality of the input data. The important layers in a convolutional network are the convolution layer, the ReLU layer, the pooling layer and the classification layer
+
+Convolution - The convolutional layer, where the network gets its name from, extracts features from input data. It maintains spatiality of the data by learning the features in forms of small squares, or feature maps. 
+
+*insert picture of a convolved feature*
+
+ReLU - The Rectified Linear Unit layer is a non-linear operation. What ReLU does, is it replaces all the negative values in the feature map by zero. Because it is a non-linear operation, it makes sure the spatiality is preserved. 
+
+*insert figure of ReLU*
+
+Pooling - In this project, max pooling is used. What max pooling does, is it moves a square of a certain size over the feature map, obtained after convolution and ReLU, and takes the largest element of that region and saves it in a square of the same size. Another way of pooling is average pooling, where instead of the largest value of the square, the average is calculated and saved in the new square. 
+
+*insert photo of max pooling*
+
+Classification - The classification of data is done via a fully connected layer, meaning all nodes are connected to every node in the previous layer, like the feedforward neural network. It uses the features from the previous layers to classify an image into various classes based on a training dataset. 
+
+### Pruning
+Pruning is a way to get a faster/smaller neural network. It is usefull for researchers and developers that do not posses the resources to process the data with big networks. In short, what pruning does, is it ranks the weights of nodes and removes the most unimportant weights from the neural network. In this project magnitude based pruning is used, with resetting. This means the significance of a weight is determined by its absolute size. After the non-essential weights are removed, the remaining weights are reset to their initial value. The advantages of pruning are that it generelises results better, improves the calculation speed of the network and makes for a smaller network as well. 
+
+*insert other types of pruning?*
+
+### Initialisation schemas
+When building a neural network, the weights of the network have to be given a value. This is usually done with an initialisation schema to prevent the output from vanishing or exploding. 
+
+In this project, the Xavier and the Kaiming initialisations are used. The Xavier initialisations sets a layer's weights to values randomly selected out of the distribution bound between 
+
+*insert xavier formula*
+
+The Kaiming initialisaion chooses a weights value from an already familiar function, the ReLU. The values from the weights are then either 0 or a positive number, smaller than 1. 
+
+*insert picture of kaiming* 
+
+For both initialisation schemas, a uniform distrubtion and a normal distribution are used to set the weights. A uniform distribution is a distribution where all values are equally likely to be chosen, so with a range from 0 to 10, all values between 0 and 1 have 10% chance to be picked, same as all values betwee 5 and 6. A normal distribution works differently, namely the chance to get a value near the mean is higher than getting a value on one of the edges. For example, with a range from 0 to 10 and mean 5, the chances of getting a value between 5 and 6 are higher than the chance of getting a value between 0 and 1.
+
+### Trade off sparsity and accuracy
+Two key words in this project are sparsity and accuracy. Sparsity is a measure of how many values in a certain weights group are 0. So, the higher the sparsity, the lower the amount of weights remaining. A high level of sparsity results in a smaller and faster neural network. But this might be at the cost of the accuracy of the neural network. The accuracy of a neural network is a measure of how well the network performs on given data after training. The higher the accuracy, the better the network perform its task, in this case, the better it recognizes written digits or pictures.
+
+When implementing pruning, it is important to keep the trade-off between sparsity and accuracy in mind. It is advantagous to have a small and fast network, but it depending on the research it might be more important to keep a high accuracy. High sparsity can result in low accuracy, so it is essential to keep this balance in mind when doing research.
+
+### Seeds
 	In general
-	Feedforward neural network
-Convolutional neural network
-	what the 6 stand for
-	in combination with ff
-	functions differing in the neural network, ReLU, Pooling
 
-Pruning
-	types
-		magnitude pruning
-
-Initialisation schemas
-	In general
-	Xavier
-	Kaiming
-
-Trade off sparsity and accuracy
-	Sparsity
-	Accuracy
-	Trade-off
-
-Seeds
+### Pytorch
 	In general
 
-Pytorch
-	In general
-
-Tensorboard
+### Tensorboard
 	In general
 
 ## Approach / Method
@@ -66,32 +91,35 @@ Tensorboard
 -possible approaches and actual approach with motivation
 -of misschien achteraf dus andere methoden geven
 
-There were two types of neural networks build for this project, a feedforward neural network and a convolutional neural network. These networks were chosen from the 6 neural networks used in Frankle and Carbin, 2019. Both networks were created using pytorch in github. The feedforward neural network was trained on the MNIST dataset, and the convolutional network got trained on the CIFAR-10 dataset. In both of the networks a pruning mechanism was implemented (provided by the stakeholder?). The pruning mechanism used is magnitude based pruning with resetting.
+There were two types of neural networks build for this project, a feedforward neural network and a convolutional neural network. These networks were chosen from the 6 neural networks used in Frankle and Carbin, 2019. Both networks were created using pytorch in github. The feedforward neural network was trained on the MNIST dataset, and the convolutional network was trained on the CIFAR-10 dataset. In both of the networks a pruning mechanism was implemented. The pruning mechanism used is magnitude based pruning with resetting.
 
-(specific spec of networks? tabelletje?)
+*insert table with specs of the networks*
 
 In order to answer the question central to this project, it is necessary to experiment and train the neural networks with different initialisation schemas. The schemas used are the Kaiming and the Xavier schemas. Both come in two variations in pytorch, namely, distributed and normalized.
 
 To find out how different initialisation schemas respond to pruning, both neural networks will run 3-5 times with both initialisation schemas. These experiments will have to run with the seed to filter out a certain randomness in the results (little more explanation). But, to still get reliable results, 3 different seeds will be used so results can be compared and analysed. See fig. … for a visualised manner of the experiments.
 
-
-Fig … Visualisation of experimenting graphviz
+*insert figure of visualisation of experimenting via graphviz*
 
 When all experiments are completed, the results will be analysed to see whether or not the initialisation schema has responded to the pruning. Focus will be on finding dissimilarities in the trade off of accuracy and sparsity between the different schemas. It will be determined which schema works best for which network and why that is the case. (sparsity levels?)
 
 After all this is done, the results will be studied to see if there is a possible custom initialisation schema that will improve performance even further and if it is possible for that schema to work as well for other pruning methods.
 
-Implement a feedforward neural network and train it on the MNIST dataset.
-Implement a convolutional neural network and train it on the CIFAR10 dataset.
-Implement the pruning mechanism. Magnitude based pruning with resetting will suffice.
-Experiment with different initialization schemas built-in into PyTorch. The question we are trying to answer is: Does the initialization schema of a network affect its robustness to pruning? Note that since initializations are sampled from probability distributions, multiple runs with different seeds are required.
-Determine, for both of the above networks, and at varying degrees of sparsity levels, which schema works best and why.
-Based on the above results, is it possible, then, to construct a custom initialization schema that improves the robustness further?
-Check whether the schema built on (6) generalizes to other pruning methods.
+In short, the steps taken in this project are as follows:
 
-aantal epochs?
-vervolgonderzoek higher sparsity
-nog een metric om graphs te krijgen, niet alleen de accuracy
+1. Implement a feedforward neural network and train it on the MNIST dataset.
+
+2. Implement a convolutional neural network and train it on the CIFAR10 dataset.
+
+3. Implement the pruning mechanism. Magnitude based pruning with resetting will suffice.
+
+4. Experiment with different initialization schemas built-in into PyTorch. The question we are trying to answer is: Does the initialization schema of a network affect its robustness to pruning? Note that since initializations are sampled from probability distributions, multiple runs with different seeds are required.
+
+5. Determine, for both of the above networks, and at varying degrees of sparsity levels, which schema works best and why.
+
+6. Based on the above results, is it possible, then, to construct a custom initialization schema that improves the robustness further?
+
+7. Check whether the schema built on (6) generalizes to other pruning methods.
 
 ## Results
 
@@ -129,23 +157,35 @@ Usability / constraints of solution
 Generalizability of solution
 Possible improvements
 
+## REQUIREMENTS
 
-## GENERAL:
+## GENERAL
 In English
 Refer the criteria for report
 Use checklist for more detailed rules
 
-## CHECKLIST:
+## CHECKLIST
 All sections
+
 Provide clear structure, one subject per section, clear storyline to solution
+
 Use literature and references
+
 Table and Graph
+
 give all tables and figures numbers and a name
+
 make sure text refers to tables and figures, discuss tables with results; explain what can be seen
+
 for graphs, make sure what the axes are and what lines mean etc
+
 Use spell checker
+
 No ´colloquial' language
-Avoid recording program code in raw form in text, use pseudocode or friendly format, important code or data in appendix
+
+Avoid recording program code in raw form in text, use pseudocode or friendly format, important code 
+or data in appendix
+
 Use formulas only when needed and explain well
 
 For operating different readers, use extra sections to 'explain' e.g. neural networks
