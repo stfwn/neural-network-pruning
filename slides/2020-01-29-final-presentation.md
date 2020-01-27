@@ -26,6 +26,16 @@ date: \today{}
 
 # Method
 
+## Model
+
+* Fully Connected.
+* Two hidden layers: 300 & 100 neurons $\rightarrow$ 266k weights.
+
+## Training
+
+
+## Pruning
+
 * Used LeNet on MNIST and tried a bunch of different inits. Nice summary on
   framework(s) used, how many lines of code written, how many epochs trained,
   etc.>
