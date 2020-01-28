@@ -69,7 +69,15 @@
 - [x] Discuss planning for next week.
 
 ### 2020-01-27
-- [ ] All: Discuss planning for interpretation of results.
-- [ ] All: Discuss planning for writing paper.
-- [ ] All: Discuss planning for preparing presentation.
-- [ ] ALl: Fill in planning for this week in detailed manner.
+- [x] All: Discuss planning for interpretation of results.
+- [x] All: Discuss planning for writing paper.
+- [x] All: Discuss planning for preparing presentation.
+- [x] ALl: Fill in planning for this week in detailed manner.
+
+### 2020-01-28
+- [x] Meet at 10:30
+- [x] Meet at 15:30
+- [x] Plan stuff out for the rest of the week.
+
+### 2020-01-29 -> end
+- [ ] Meet 2/3 times a day to discuss work and progress on report.
