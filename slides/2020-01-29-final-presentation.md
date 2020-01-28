@@ -4,13 +4,24 @@ author: Stefan Wijnja, Ellis Wierstra, Thomas Hamburger
 date: \today{}
 ---
 
+
+
 # Neural networks are very cool
 
-* TODO: Images of cool applications.
+\center
+![](images/stocks.jpeg){ height=150px }
 
-# But they can be very demanding 
+# But they can be very demanding
 
-* TODO: Numbers for huge networks and how long it takes to train them.
+* Biggest network has 16 million neurons
+  - A powerful desktop needs 12 days to train 100.000 neurons
+  - Would take more than 5 years to train
+
+* Le et al (2011)
+  - Cluster of 1,000 servers
+  - 16,000 CPU cores
+  - Ran for 3 days
+
 
 ---
 
@@ -44,7 +55,14 @@ A big net contains a small net that can match the big net.
 TODO
 
 * [@frankle2019]
+  - “Winning tickets”
+    - > 80-90% size reduction
+    - Learn faster
+    - Higher test accuracy
 * [@morcos2019]
+  - Finding winning tickets is computationally expensive
+    - Solution: possible to reuse WTs across datasets
+    - Generalise without performance loss
 
 ---
 
