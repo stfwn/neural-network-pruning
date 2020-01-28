@@ -146,14 +146,47 @@ Initialization Methods' Probability Density Functions
 
 ![](images/results-1-xaviers.png)
 
+---
+
+\center
+__Question__
+
+\center
+How do initialization algorithms compare when looking for winning tickets?
+
+
+\center
+__Answer__\*
+\begin{align*}
+\text{Xavier} &> \text{Kaiming}\\
+\text{Uniform} &\approx \text{Normal}\\
+\text{Narrow} &> \text{wide}
+\end{align*}
+
+---
+
 # Further Research
 
-Get interns to try:
-
-* Distributions that are even narrower around $0$.
-* More datasets.
-* More models.
-* More pruning rates and pruning intervals.
-* More pruning methods.
+* Grid search other datasets/models/pruning settings.
+* Are pruning method and initialization method connected?
 
 # Questions?
+
+* Thanks
+    * ![](images/andrei.jpg){ width=10px } Andrei Apostol
+    * Putri van der Linden and Lieuwe Rekker
+    * BrainCreators
+* Stats
+    * ~599 lines of code
+    * 122 training runs
+* Frameworks
+    * PyTorch
+* Can I reproduce your results?
+    * Please do. Email s.wijnja@me.com
+
+\center
+![](images/braincreators.svg){ height=50px }
+
+---
+
+# References
