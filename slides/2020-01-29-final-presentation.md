@@ -109,10 +109,10 @@ How do initialization algorithms compare when looking for winning tickets?
 # Method
 ## Initialization Methods
 
-|                              |  | Xavier                                              | Kaiming                                    |
-|------------------------------|--|-----------------------------------------------------|--------------------------------------------|
-| $\mathcal{U}(-a, a)$         |  | $\sqrt{\frac{6}{\text{fan\_in} + \text{fan\_out}}}$ | $\sqrt{\frac{3}{\text{fan\_mode}}}$        |
-| $\mathcal{N}(0, \text{var})$ |  | $\sqrt{\frac{2}{\text{fan\_in} + \text{fan\_out}}}$ | $\frac{\text{1}}{\sqrt{\text{fan\_mode}}}$ |
+|                                |  | Xavier                                              | Kaiming                                    |
+|--------------------------------|--|-----------------------------------------------------|--------------------------------------------|
+| $\mathcal{U}(-a, a)$           |  | $\sqrt{\frac{6}{\text{fan\_in} + \text{fan\_out}}}$ | $\sqrt{\frac{3}{\text{fan\_mode}}}$        |
+| $\mathcal{N}(0, \text{std}^2)$ |  | $\sqrt{\frac{2}{\text{fan\_in} + \text{fan\_out}}}$ | $\frac{\text{1}}{\sqrt{\text{fan\_mode}}}$ |
 
 * `fan_in`/`fan_out`: number of inputs to/outputs from a neuron.
   `fan_mode`: `fan_in` or `fan_out`.
