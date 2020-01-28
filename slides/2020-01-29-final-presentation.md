@@ -3,24 +3,21 @@ title: One Initialization to Rule Them All?
 author: Stefan Wijnja, Ellis Wierstra, Thomas Hamburger
 date: \today{}
 ---
-
-
-
 # Neural networks are very cool
 
-\center
-![](images/stocks.jpeg){ height=150px }
+\center ![](images/health.png){ height=100px }     ![](images/stocks.jpeg){ height=100px }
+
+
+\center ![](images/go.jpg){ height=100px }     ![](images/hurricane.jpg){ height=100px }
+
+---
 
 # But they can be very demanding
 
-* Biggest network has 16 million neurons
-  - A powerful desktop needs 12 days to train 100.000 neurons
-  - Would take more than 5 years to train
-
-* Le et al (2011)
-  - Cluster of 1,000 servers
-  - 16,000 CPU cores
-  - Ran for 3 days
+* Largest networks have billions of parameters
+* Large clusters of GPUs needed to train
+  - Limits accessibility
+  - Limits applicability
 
 
 ---
@@ -52,17 +49,18 @@ A big net contains a small net that can match the big net.
 
 # Status quo on pruning
 
-TODO
+[@frankle2019]
 
-* [@frankle2019]
-  - “Winning tickets”
-    - > 80-90% size reduction
-    - Learn faster
-    - Higher test accuracy
-* [@morcos2019]
-  - Finding winning tickets is computationally expensive
-    - Solution: possible to reuse WTs across datasets
-    - Generalise without performance loss
+* “Winning tickets” algorithm
+  - 80-90% size reduction
+  - Learn faster
+  - Higher test accuracy
+
+[@morcos2019]
+
+* Finding winning tickets is computationally expensive
+  - Solution: train once, reuse on other datasets
+  - With very little performance loss
 
 ---
 
