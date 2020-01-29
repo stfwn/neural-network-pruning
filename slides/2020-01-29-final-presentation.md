@@ -59,7 +59,7 @@ A big net contains a small net that can match the big net.
 [@morcos2019]
 
 * Finding winning tickets is computationally expensive
-  - Solution: train once, reuse on other datasets
+  - Solution: generate them once, reuse on other datasets
   - With very little performance loss
 
 ---
