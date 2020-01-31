@@ -10,7 +10,15 @@ toc: true
 
 * TODO: Neural networks are cool
 
+Neural networks are possibly the technological development with the most potential 
+in the future. Neural networks can be trained to carry out tasks like object detection 
+or shape recognition. These functions can be very useful in every day life, for shape 
+recognition or self driving cars.
+
 * TODO: But they can be very demanding
+
+But sadly there is a flip side to these functions of neural networks. Getting high performance
+on these tasks comes with a pretty high price. Getting a high performance on these tasks
 
 * TODO: Enter: the Lottery Ticket Hypothesis
 
