@@ -49,3 +49,4 @@
 | Monday          | 2020-01-27 | Work on results, write code for plots and export them, make final presentation.                                                                               | Stefan  | 8h         |
 | Tuesday         | 2020-01-28 | Get in a fight with Matplotlib, win it, fix initialization probability density function plots, correct init functions, finalize and prepare the presentation. | Stefan  | 6h         |
 | Wednesday       | 2020-01-29 | Do presentation, attend other presentations, plan for rest of the week.                                                                                       | All     | 3h         |
+| Thursday        | 2020-01-30 | Write method, results and conclusion.                                                                                                                         | Stefan  | 7h         |
