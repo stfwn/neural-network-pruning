@@ -17,8 +17,14 @@ recognition or self driving cars.
 
 * TODO: But they can be very demanding
 
-But sadly there is a flip side to these functions of neural networks. Getting high performance
-on these tasks comes with a pretty high price. Getting a high performance on these tasks
+But sadly there is a flip side to these functions of neural networks. Getting high 
+performance on these tasks comes with a pretty high price. Getting a high performance 
+on these tasks typically comes with a high number of parameters within the network, 
+which demand great computational and memory resources.
+
+A way to counter this demand for resources is to create sparser networks, meaning 
+smaller by lessening the amount of connections within the network. A way to do this
+is by using the Lottery Ticket Hypothesis by Frankle and Carbin, 2019.
 
 * TODO: Enter: the Lottery Ticket Hypothesis
 
