@@ -6,6 +6,11 @@ only 3.5% of the weights remain, the mean performance of all four methods is
 very similar to one another, and every method on its own shows stable results
 in terms of deviation from its mean when running experiments repeatedly.
 
+It is immediately worth nothing that conform to @frankle2019's lottery ticket
+hypothesis, pruned versions of the original network are matching and even
+outperforming the test accuracy achieved initially. Winning tickets are being
+found up to 6.9% weights remaining.
+
 ![Each line shows the mean test accuracy from 11 differently seeded runs on one
 initialization method, in order to produce a reliable plot. The error bars
 represent the standard deviation between the runs; an indication for the
@@ -14,7 +19,7 @@ measured every fifth epoch, right before pruning and
 resetting.](images/results-0-original-4.png)
 
 It could be argued this concludes the research, as we are technically not
-finding winning tickets anymore at this level of sparsity -- all of the
+finding winning tickets anymore beyond this level of sparsity -- all of the
 networks' performances dropped below the accuracy of the original, full-size
 network at around the 6.9% mark. This disquilifies them from winning the
 lottery as defined by @frankle2019. However, further inspection uncover
