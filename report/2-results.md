@@ -1,17 +1,18 @@
 ## Results
 
-Figure TODO shows the test accuracy of each initialization method as iterative
-pruning is applied over the course of the experiment. Up to the point where
-only 3.5% of the weights remain, the mean performance of all four methods is
-very similar to one another, and every method on its own shows stable results
-in terms of deviation from its mean when running experiments repeatedly.
+Figure \ref{results-0} shows the test accuracy of each initialization method as
+iterative pruning is applied over the course of the experiment. Up to the point
+where only 3.5% of the weights remain, the mean performance of all four methods
+is very similar to one another, and every method on its own shows stable
+results in terms of deviation from its mean when running experiments
+repeatedly.
 
 It is immediately worth nothing that conform to @frankle2019's lottery ticket
 hypothesis, pruned versions of the original network are matching and even
 outperforming the test accuracy achieved initially. Winning tickets are being
 found up to 6.9% weights remaining.
 
-![Each line shows the mean test accuracy from 11 differently seeded runs on one
+![\label{results-0}Each line shows the mean test accuracy from 11 differently seeded runs on one
 initialization method, in order to produce a reliable plot. The error bars
 represent the standard deviation between the runs; an indication for the
 stability of the test accuracy at that point.  The displayed test accuracy was
@@ -39,13 +40,14 @@ distribution did not make a difference in these experiments -- the deciding
 difference was the formula that decided the parameters of these distributions.
 
 Further experiments with the Xavier method of initialization have led to the
-results shown in figure TODO. Here both variants of the original Xavier
-distributions -- normal and uniform -- have been narrowed or widened by a
-factor of 2.
+results shown in figure \ref{results-1}. Here both variants of the original
+Xavier distributions -- normal and uniform -- have been narrowed or widened by
+a factor of 2.
 
-![This plot shows the same type of information as in figure TODO, but for
-Xavier distributions that have been widened (`*-double`) or narrowed (`*-half`)
-by a factor of 2.](images/results-1-xaviers.png)
+![\label{results-1}This plot shows the same type of information as in figure
+\ref{results-0}, but for Xavier distributions that have been widened
+(`*-double`) or narrowed (`*-half`) by a factor of
+2.](images/results-1-xaviers.png)
 
 The numbers show that both narrowed distributions outperform the other
 initialization strategies at 2.3% weights remaining in the mean and with a

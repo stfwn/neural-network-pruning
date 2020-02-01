@@ -15,18 +15,23 @@ It is a fully connected network containing two hidden layers with 300 and 100
 neurons, in that order. With an 784-neuron input layer -- sized to the MNIST's
 $28 \times 28$ images, this sums up to $266.2$k weights.
 
-__Initialization methods.__ Four initialization algorithms were tested, stemming
-from two distinct approaches to the initialization process: one named _Xavier_,
-coined by @glorot2010, and one called _Kaiming_, originating from @kaiming2015.
-Each approach offers a formula to supply the specifications for both a normal
-and a uniform distribution, which is how we arrive at four algorithms in total.
+__Initialization methods.__ As a starting point, four initialization algorithms
+were tested, stemming from two distinct approaches to the initialization
+process: one named _Xavier_, coined by @glorot2010, and one called _Kaiming_,
+originating from @kaiming2015.  Each approach offers a formula to supply the
+specifications for both a normal and a uniform distribution, which is how we
+arrive at four algorithms in total.
 
 |                                | Xavier                                              | Kaiming                           |
 |--------------------------------|-----------------------------------------------------|-----------------------------------|
 | $\mathcal{U}(-a, a)$           | $\sqrt{\frac{6}{\text{fan\_in} + \text{fan\_out}}}$ | $\sqrt{\frac{3}{\text{fan\_in}}}$ |
 | $\mathcal{N}(0, \text{std}^2)$ | $\sqrt{\frac{2}{\text{fan\_in} + \text{fan\_out}}}$ | $\sqrt{\frac{1}{\text{fan\_in}}}$ |
+: The first four initialization algorithms that were tested. The formulas in
+the table supply the missing ingredients for the matching distributions to the
+left. `fan_in` and `fan_out` stand for the number of incoming and outgoing
+connections to a neuron, respectively. \label{inits}
 
-In the table[^1], the equations specify the bounds of a uniform ($\mathcal{U}$)
+In table \ref{inits}, the equations specify the bounds of a uniform ($\mathcal{U}$)
 or standard deviation of a normal ($\mathcal{N}$) distribution. The intuition
 here is that both formulas scale the size of the weights in a layer inversely
 proportional to the number connections to that layer, in order to keep the
@@ -35,15 +40,12 @@ incorporates information about the number of connections _from_ the layer to
 additionally prevent the gradient from doing the same on the backward pass
 (Xavier).
 
-[^1]: `fan_in`/`fan_out`: the number of incoming and outgoing connections to a
-  neuron, respectively.
-
 The precise result of these functions applied on the model used here can be
-seen in figure TODO, where the probability density functions for each
+seen in figure \ref{pdfs}, where the probability density functions for each
 initialization method per layer are plotted.
 
 ![Plots for the probability density functions for each initialization method,
-per layer.](./images/pdfs.png)
+per layer.\label{pdfs}](./images/pdfs.png)
 
 In addition to these four commonly used initialization methods, four extra
 algorithms were tested, which can be obtained simply by halving or doubling the
@@ -52,13 +54,14 @@ uniform or normal distribution in their stead. This effectively widens (for
 doubling) or narrows (for halving) the resulting distributions compared to the
 original version.
 
-
 __Training.__ For all experiments, the network was trained for 100 epochs at a
 learning rate of $0.0012$, during which it was pruned by $20\%$ and
-subsequently reset to its initial weights every 5 epochs. 
+subsequently reset to its initial weights every 5 epochs. See figure
+\ref{nn-size-progression} for a visualization of the size of the network over
+the course of an experiment.
 
-![The progression of the size of the network over the course of one
-experiment.](./images/pruning-progression.png)
+![\label{nn-size-progression}The progression of the size of the network over
+the course of one experiment.](./images/pruning-progression.png)
 
 __Testing.__ To reduce noise in the results from the experiments, each of the
 eight initialization methods were run 11 times. The primary metric to inform
