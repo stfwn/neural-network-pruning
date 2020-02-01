@@ -2,7 +2,19 @@
 title: Making Networks Prune-Ready
 author: Stefan Wijnja, Ellis Wierstra, Thomas Hamburger
 date: \today{}
-abstract: TODO
+abstract: |
+    As universal function approximators, neural networks have proven to be a useful
+    tool in many areas of research and industry. However, the computational
+    efficiency of deep learning leaves much to be desired. On this topic,
+    @frankle2019 have presented the lottery ticket hypothesis, which states that
+    large networks contain smaller subnetworks that rival the larger versions in
+    performance. In this paper a comparison between different weight initialization
+    algorithms is made to find out how a network's starting point affects the
+    search for these subnetworks. Results point toward a pattern where drawing
+    weights from Xavier-based, narrower distributions may outperform drawing from
+    Kaiming-based, wider distributions on this task, while the difference in shape
+    of a normal versus uniform distribution may not matter much. More research is
+    needed to confirm or falsify these preliminary conclusions.
 toc: true
 ---
 
