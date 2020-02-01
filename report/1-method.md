@@ -31,8 +31,9 @@ or standard deviation of a normal ($\mathcal{N}$) distribution. The intuition
 here is that both formulas scale the size of the weights in a layer inversely
 proportional to the number connections to that layer, in order to keep the
 activation from exploding or vanishing on the forward pass. The Xavier method
-incorporates more information about the number of connections to additionally
-prevent the gradient from doing the same on the backward pass (Xavier).
+incorporates information about the number of connections _from_ the layer to
+additionally prevent the gradient from doing the same on the backward pass
+(Xavier).
 
 [^1]: `fan_in`/`fan_out`: the number of incoming and outgoing connections to a
   neuron, respectively.
@@ -51,14 +52,6 @@ uniform or normal distribution in their stead. This effectively widens (for
 doubling) or narrows (for halving) the resulting distributions compared to the
 original version.
 
-__Iterative, magnitude-based pruning.__ In general, pruning is the idea of
-eliminating weights from a neural network, producing a smaller network.
-Magnitude-based pruning specifies that the weights that will be nullified are
-those in the top $X$ percent of weights closest to $0$ -- the intuition being
-that the weights that are smallest in absolute terms are the least relevant to
-the network's outcome and should be the first to go. Iterative, magnitude-based
-pruning then describes a process where not all pruning is done in one step, but
-over the course of multiple, spread-out pruning steps. [@frankle2019]
 
 __Training.__ For all experiments, the network was trained for 100 epochs at a
 learning rate of $0.0012$, during which it was pruned by $20\%$ and
