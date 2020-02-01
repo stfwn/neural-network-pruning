@@ -11,7 +11,7 @@ toc: true
 The developments in the field of deep learning have recently been accelerating,
 in part due to advancements in hardware capabilities. The theoretical
 possibility of neural networks to learn any function regardless of
-complexity [@scarselli1998] to their growing importance. This
+complexity [@scarselli1998] contributes to their growing importance. This
 universality makes deep neural networks useful in a wide range of fields, for
 instance medical imaging, stock price prediction and natural disaster
 forecasting. The complexity of the underlying function to be learned is strongly
@@ -37,7 +37,7 @@ without negatively impacting performance.
 One issue the with pruning a large network that training the complete network is
 still computationally intensive.
 [@lecun1989generalization].
-However, if we can reduce the trained network in size, would it be possible to
+But, if we can reduce the trained network in size, would it be possible to
 start with the pruned network and train it from the start, thereby reducing
 the computational complexity of the training process?
 Unfortunately, it has been shown that training the pruned networks is harder and
