@@ -22,7 +22,7 @@ An important disadvantage of large neural networks is that they contain
 a large number of parameters and thus require great amounts of computing power
 and memory resources to be trained. Moreover, complex networks have a
 tendency to overfit to the problem they are trained on, which lowers their
-generalisability to other problems [@lecun1989generalization], while networks
+generalizability to other problems [@lecun1989generalization], while networks
 that are too small, do not have the power and flexibility to represent the data.
 [@lecun1990].
 
@@ -31,19 +31,13 @@ To solve some of the problems associated with large neural networks, the density
 of a neural network can be reduced by cutting down the number of nonzero-valued
 parameters in its weight matrices, thereby inducing sparsity. This process is
 called pruning [@lecun1990]. It has been shown that pruning can reduce the size
-of neural networks in terms of parameter count by more than 90% [@lecun1990],
-without negatively impacting performance.
+of neural networks in terms of parameter count by more than 90% [@lecun1990].
 
-One issue the with pruning a large network that training the complete network is
-still computationally intensive.
-[@lecun1989generalization].
+One issue the with pruning is that training the complete network is still
+computationally intensive [@lecun1989generalization].
 However, if we can reduce the trained network in size, would it be possible to
 start with the pruned network and train it from the start, thereby reducing
 the computational complexity of the training process?
-Unfortunately, it has been shown that training the pruned networks is harder and
-leads to lower performance than training the original network [@han2015]. This
-raises the question if differently initialized networks differ in their
-performance after pruning.
 
 __Enter: the Lottery Ticket Hypothesis__ Based on the the observation that the
 configuration of the starting weights of a pruned network affects its capacity
@@ -58,17 +52,19 @@ The specific subnetwork that learns particularly well is called a "winning
 ticket". These networks converge faster and have better performance in terms of
 test accuracy.
 
-Although training highly sparse networks is far more efficient computationally,
-finding these winning ticket initializations still requires training the
-complete network which is computationally expensive.
-[@morcos2019] have found that winning tickets can be reused for other datasets
-and optimizers. This increases their utility, because the computationally
-expensive task of finding the winning ticket only has to be done once.
-
 The initial values of the weights are drawn from a random sample. But the
 specific distributions these samples are drawn from differ between
-initialization methods. In this project we would like to uncover how
-initialization algorithms compare when looking for winning tickets.
+initialization methods. This raises the question if differently initialized
+networks differ in their performance after pruning. In this project we would
+like to uncover how initialization algorithms compare when looking for winning
+tickets.
+
+Although training highly sparse networks is far more efficient computationally,
+finding these winning ticket initializations still requires training the
+complete network which is computationally expensive. However, [@morcos2019]
+have found that winning tickets can be reused for other datasets
+and optimizers. This increases their utility, because the computationally
+expensive task of finding the winning ticket only has to be done once.
 
 __Iterative, magnitude-based pruning.__
 Magnitude-based pruning specifies that the weights that will be nullified are
