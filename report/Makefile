@@ -1,2 +1,2 @@
 all:
-	pandoc report.md --bibliography=references.bib -o report.pdf
+	pandoc {0..4}*.md --bibliography=references.bib -o report.pdf &
