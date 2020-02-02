@@ -1,5 +1,5 @@
 ---
-title: Making Networks Prune-Ready
+title: One Initialization to Rule Them All?
 author: Stefan Wijnja, Ellis Wierstra, Thomas Hamburger
 date: \today{}
 abstract: |
