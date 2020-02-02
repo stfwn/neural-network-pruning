@@ -12,7 +12,7 @@ testing set.
 __Model.__ A neural network following the specifications in @lecun1998, as is
 also used in @frankle2019 in their paper about the lottery ticket hypothesis.
 It is a fully connected network containing two hidden layers with 300 and 100
-neurons, in that order. With an 784-neuron input layer -- sized to the MNIST's
+neurons, in that order. With a 784-neuron input layer -- sized to the MNIST's
 $28 \times 28$ images, this sums up to $266.2$k weights.
 
 __Initialization methods.__ As a starting point, four initialization algorithms
@@ -36,9 +36,8 @@ or standard deviation of a normal ($\mathcal{N}$) distribution. The intuition
 here is that both formulas scale the size of the weights in a layer inversely
 proportional to the number connections to that layer, in order to keep the
 activation from exploding or vanishing on the forward pass. The Xavier method
-incorporates information about the number of connections _from_ the layer to
-additionally prevent the gradient from doing the same on the backward pass
-(Xavier).
+additionally incorporates information about the number of connections _from_
+the layer to prevent the gradient from doing the same on the backward pass.
 
 The precise result of these functions applied on the model used here can be
 seen in figure \ref{pdfs}, where the probability density functions for each
