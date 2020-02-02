@@ -43,29 +43,30 @@ LeNet model already present in the `logs` folder.
 
 ```
 .
-├── data                            Data dir, managed by program.
-├── experiments.md                  Notes about experiments.
-├── faq.md                          Notes about why we did things.
-├── google-colab-playground.ipynb   Python notebook to use this repo with Google Colab.
-├── initializing.py                 Code for different weights init schemes.
-├── log.md                          Log for university.
-├── logs
-│   ├── <*.log>                     Contain hyperparams and data about runs.
-│   ├── analyze.py                  Playground to plot things in.
-│   ├── helpers.py                  Helpers to import/filter run logs.
-│   └── summarize.py                Script to inspect what logs are present in this folder.
-├── main.py
-├── models
-│   ├── Conv6.py                    Convolutional network model with 6 conv layers.
-│   ├── ExpandedModule.py           Base class with weight saving/resetting functionality.
-│   └── LeNet.py                    Fully connected neural network model based on LeNet.
-├── pruning.py                      Pruning code (by Andrei @ BrainCreators).
 ├── README.md
-├── report                          Folder containing everything for the final report.
-├── slides                          Folder containing everything for presentations.
-├── testing                         Code for testing networks.
+├── main.py                         Entrypoint
+├── data                            Data dir (managed)
+├── experiments.md                  Notes about experiments
+├── faq.md                          Notes about why we did things
+├── google-colab-playground.ipynb   Python notebook to use this repo with Google Colab
+├── log.md                          Log for university
+├── todo.md                         Living to-do list for the project
+├── logs
+│   ├── <*.log>                     Contain hyperparams and data about runs
+│   ├── analyze.py                  Playground to plot things in
+│   ├── helpers.py                  Helpers to import/filter run logs
+│   └── summarize.py                Script to inspect what logs are present in this folder
+├── tensorboard-logs                Folder where TensorBoard logs are written to
+├── report                          Folder containing everything for the final report
+├── slides                          Folder containing everything for presentations
+├── models
+│   ├── ExpandedModule.py           Base class with weight saving/resetting functionality
+│   ├── Conv6.py                    Convolutional network model with 6 conv layers
+│   └── LeNet.py                    Fully connected neural network model based on LeNet
+├── initializing.py                 Code for different weight init schemes
+├── pruning.py                      Pruning code (by Andrei @ BrainCreators)
+├── testing                         Code for testing networks
 │   └── Tester.py
-├── todo.md                         To-do list for our project.
-└── training                        Code for training networks.
+└── training                        Code for training networks
     └── Trainer.py
 ```
