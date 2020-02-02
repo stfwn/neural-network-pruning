@@ -18,8 +18,8 @@ abstract: |
     versus uniform distribution may not matter much. More research is needed to
     confirm or falsify these preliminary conclusions.
 toc: true
-margin-left: 5cm
-margin-right: 5cm
+margin-left: 4.8cm
+margin-right: 4.8cm
 ---
 
 ## Introduction
