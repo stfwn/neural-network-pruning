@@ -7,7 +7,7 @@ is very similar to one another, and every method on its own shows stable
 results in terms of deviation from its mean when running experiments
 repeatedly.
 
-It is immediately worth nothing that conform to @frankle2019's lottery ticket
+It is immediately worth noting that conform to @frankle2019's lottery ticket
 hypothesis, pruned versions of the original network are matching and even
 outperforming the test accuracy achieved initially. Winning tickets are being
 found up to 6.9% weights remaining.
@@ -15,7 +15,7 @@ found up to 6.9% weights remaining.
 ![\label{results-0}Each line shows the mean test accuracy from 11 differently seeded runs on one
 initialization method, in order to produce a reliable plot. The error bars
 represent the standard deviation between the runs; an indication for the
-stability of the test accuracy at that point.  The displayed test accuracy was
+stability of the test accuracy at that point. The displayed test accuracy was
 measured every fifth epoch, right before pruning and
 resetting.](images/results-0-original-4.png)
 
