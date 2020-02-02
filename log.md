@@ -51,3 +51,4 @@
 | Wednesday       | 2020-01-29 | Do presentation, attend other presentations, plan for rest of the week.                                                                                       | All     | 3h         |
 | Thursday        | 2020-01-30 | Write method, results and conclusion.                                                                                                                         | Stefan  | 7h         |
 | Friday          | 2020-01-31 | Write abstract. Do some gardening on the report (add labels, apply small fixes).                                                                              | Stefan  | 1h         |
+| Sunday          | 2020-02-02 | Rewrite introduction. Finalize report structure. Clean up repository in preparation for handing it in.                                                        | Stefan  | 5h         |

@@ -28,7 +28,6 @@
     - [x] 1: Implement a feedforward neural network and train it on the MNIST dataset.
     - [x] 2: Implement a convolutional neural network and train it on the MNIST dataset.
     - [x] When done, send Andrei mail for pruning code.
-    - [ ] Optional: do the same for the CIFAR10 dataset.
 
 ### 2020-01-16
 - [x] Step 3.
