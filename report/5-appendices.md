@@ -20,7 +20,10 @@ corresponding networks after training and pruning.
 
 __Git Repository__
 
-
+For this project a Git repository was used whilst working
+on the neural network. The repository can track changes made to 
+files in a project. It builds a history of the project where all
+these changes are saved.
 
 __Trade off Sparsity and Accuracy__
 
