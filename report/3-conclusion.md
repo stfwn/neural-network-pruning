@@ -42,5 +42,10 @@ isolation, the probability density functions that arise from Xavier methods are
 in fact wider for every layer than those originating from Kaiming equations.
 Then notice that _how much wider_ Xavier probability density functions are
 differs per layer. This relationship between weight distributions from layer to
-layer is an interesting pattern, and there may be a regularity here that can be
-uncovered by doing further research.
+layer is an interesting pattern, and there may be a regularity here that is
+surely worth spending time and resources on to uncover in further research.
+
+Overall, the search for winning tickets in the lottery as defined by
+@frankle2019 is a promising one, and the research presented here shows there
+may be much to gain from the investigation of different initialization
+strategies with respect to this search.
