@@ -79,5 +79,8 @@
 - [x] Meet at 15:30
 - [x] Plan stuff out for the rest of the week.
 
-### 2020-01-29 -> end
-- [ ] Meet 2/3 times a day to discuss work and progress on report.
+### 2020-01-29 -> 2020-02-01
+- [x] Meet 2/3 times a day to discuss work and progress on report.
+
+### 2020-02-02
+- [x] Finalize and hand in report.

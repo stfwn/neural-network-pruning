@@ -43,30 +43,30 @@ LeNet model already present in the `logs` folder.
 
 ```
 .
-├── README.md
-├── main.py                         Entrypoint
-├── data                            Data dir (managed)
-├── experiments.md                  Notes about experiments
-├── faq.md                          Notes about why we did things
-├── google-colab-playground.ipynb   Python notebook to use this repo with Google Colab
-├── log.md                          Log for university
-├── todo.md                         Living to-do list for the project
+├── README.md                       This doc.
+├── main.py                         Entrypoint.
+├── data                            Data dir (managed).
+├── experiments.md                  Notes about experiments.
+├── faq.md                          Notes about why we did things.
+├── google-colab-playground.ipynb   Python notebook to use this repo with Google Colab.
+├── log.md                          Log for university.
+├── todo.md                         Living to-do list for the project.
+├── report                          Folder containing everything for the final report.
+├── slides                          Folder containing everything for presentations.
 ├── logs
-│   ├── <*.log>                     Contain hyperparams and data about runs
-│   ├── analyze.py                  Playground to plot things in
-│   ├── helpers.py                  Helpers to import/filter run logs
-│   └── summarize.py                Script to inspect what logs are present in this folder
-├── tensorboard-logs                Folder where TensorBoard logs are written to
-├── report                          Folder containing everything for the final report
-├── slides                          Folder containing everything for presentations
+│   ├── <*.log>                     Contain hyperparams and data about runs.
+│   ├── analyze.py                  Playground to plot things in.
+│   ├── helpers.py                  Helpers to import/filter run logs.
+│   └── summarize.py                Script to inspect what logs are present in this folder.
+├── tensorboard-logs                Folder where TensorBoard logs are written to.
 ├── models
-│   ├── ExpandedModule.py           Base class with weight saving/resetting functionality
-│   ├── Conv6.py                    Convolutional network model with 6 conv layers
-│   └── LeNet.py                    Fully connected neural network model based on LeNet
-├── initializing.py                 Code for different weight init schemes
-├── pruning.py                      Pruning code (by Andrei @ BrainCreators)
-├── testing                         Code for testing networks
+│   ├── ExpandedModule.py           Base class with weight saving/resetting functionality.
+│   ├── Conv6.py                    Convolutional network model with 6 conv layers.
+│   └── LeNet.py                    Fully connected neural network model based on LeNet.
+├── initializing.py                 Code for different weight init schemes.
+├── pruning.py                      Pruning code (by Andrei @ BrainCreators).
+├── testing                         Code for testing networks.
 │   └── Tester.py
-└── training                        Code for training networks
+└── training                        Code for training networks.
     └── Trainer.py
 ```
