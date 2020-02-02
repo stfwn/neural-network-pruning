@@ -45,7 +45,7 @@ differs per layer. This relationship between weight distributions from layer to
 layer is an interesting pattern, and there may be a regularity here that is
 surely worth spending time and resources on to uncover in further research.
 
-Overall, the search for winning tickets in the lottery as defined by
-@frankle2019 is a promising one, and the research presented here shows there
-may be much to gain from the investigation of different initialization
-strategies with respect to this search.
+Overall, the search for a winning ticket-generating algorithm in the lottery as
+defined by @frankle2019 is a promising one, and the research presented here
+shows there may be much to gain from the investigation of different
+initialization strategies with respect to this search.

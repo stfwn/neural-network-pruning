@@ -54,6 +54,16 @@ uniform or normal distribution in their stead. This effectively widens (for
 doubling) or narrows (for halving) the resulting distributions compared to the
 original version.
 
+__Iterative, magnitude-based pruning.__ In general, pruning is the idea of
+eliminating weights from a neural network, producing a smaller network.
+Magnitude-based pruning specifies that the weights that will be nullified are
+those in the top $X$ percent of weights closest to $0$ -- the intuition being
+that the weights that are smallest in absolute terms are the least relevant to
+the network's outcome and should be the first to go. Iterative, magnitude-based
+pruning then describes a process where not all pruning is done in one step, but
+over the course of multiple steps that are spread out over the course of
+training. [@frankle2019]
+
 __Training.__ For all experiments, the network was trained for 100 epochs at a
 learning rate of $0.0012$, during which it was pruned by $20\%$ and
 subsequently reset to its initial weights every 5 epochs. See figure
