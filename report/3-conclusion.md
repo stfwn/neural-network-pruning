@@ -30,9 +30,10 @@ An explanation for why distributions that are narrower around $0$ outperform
 wider distributions could lie in the fact that magnitude-based pruning is used
 here. Perhaps if the weight initializations are closer together to begin with,
 the network is more robust to pruning as the other weights can more easily be
-optimized to fill the gap that was left. This is an interesting notion that
-should be researched further by experimenting with different pruning methods
-in combination with narrow and wide initialization methods.
+optimized during training to bridge the parametric gap caused by the latest
+round of pruning. This is an interesting notion that should be researched
+further by experimenting with different pruning methods in combination with
+narrow and wide initialization methods.
 
 Finally, the reason Xavier initialization methods outperform Kaiming methods
 here should lie in the size of the weights in each layer relative to weights in

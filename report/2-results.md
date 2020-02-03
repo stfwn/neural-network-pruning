@@ -23,8 +23,9 @@ It could be argued this concludes the research, as we are technically not
 finding winning tickets anymore beyond this level of sparsity -- all of the
 networks' performances dropped below the accuracy of the original, full-size
 network at around the 6.9% mark. This disquilifies them from winning the
-lottery as defined by @frankle2019. However, further inspection uncover
-regularities that may be useful for further research.
+lottery as defined by @frankle2019. However, further inspection of behaviors at
+extreme levels of pruning uncovers interesting regularities that may be useful
+for further research.
 
 After the 3.5% mark, both Xavier-initalized networks perform better than both
 Kaiming-initalized ones in the mean and in terms of stability around this mean.

@@ -17,10 +17,10 @@ $28 \times 28$ images, this sums up to $266.2$k weights.
 
 __Initialization methods.__ As a starting point, four initialization algorithms
 were tested, stemming from two distinct approaches to the initialization
-process: one named _Xavier_, coined by @glorot2010, and one called _Kaiming_,
-originating from @kaiming2015.  Each approach offers a formula to supply the
-specifications for both a normal and a uniform distribution, which is how we
-arrive at four algorithms in total.
+process: one we will refer to by the name _Xavier_, coined by @glorot2010, and
+one we dub _Kaiming_, originating from @kaiming2015.  Each approach offers a
+formula to supply the specifications for both a normal and a uniform
+distribution, which is how we arrive at four algorithms in total.
 
 |                                | Xavier                                              | Kaiming                           |
 |--------------------------------|-----------------------------------------------------|-----------------------------------|
@@ -64,10 +64,10 @@ over the course of multiple steps that are spread out over the course of
 training. [@frankle2019]
 
 __Training.__ For all experiments, the network was trained for 100 epochs at a
-learning rate of $0.0012$, during which it was pruned by $20\%$ and
-subsequently reset to its initial weights every 5 epochs. See figure
-\ref{nn-size-progression} for a visualization of the size of the network over
-the course of an experiment.
+learning rate of $12e-4$, during which it was pruned by $20\%$ of the remaining
+weights and subsequently reset to its initial weights every 5 epochs.  See
+figure \ref{nn-size-progression} for a visualization of the size of the network
+over the course of an experiment.
 
 ![\label{nn-size-progression}The progression of the size of the network over
 the course of one experiment.](./images/pruning-progression.png)

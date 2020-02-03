@@ -38,11 +38,11 @@ states:
 > accuracy of the original network after training for at most the same number
 > of iterations. [@frankle2019]
 
-It has been shown before that by removing weights from a network in a
-structured way (_pruning_), network sizes can be reduced by up to 90% without
-loss in performance [@frankle2019: 1]. The novelty here lies in the idea that a
-reduced network is not simply used as-is, but its weights are reset to the
-values post-initialization and then retrained. 
+It has been shown before that by methodically removing weights from a network
+(_pruning_), network sizes can be reduced by up to 90% without loss in
+performance [@frankle2019: 1]. The novelty here lies in the idea that a reduced
+network is not simply used as-is, but its weights are reset to the values
+post-initialization and then retrained. 
 
 Indeed, @frankle2019's research has shown that the reduced and retrained
 networks can be up to 96 percent smaller than the original, full-sized network
@@ -53,5 +53,5 @@ using it.
 
 Naturally this leads one to wonder if there is a way to skip training the large
 network and initialize the winning ticket in one shot. To inch closer to this
-holy grail of pruning, we compare different initialization algorithms to see
-how a network's starting point affects the search for winning tickets.
+ideal, we compare different initialization algorithms to see how a network's
+starting point affects the search for winning tickets.
